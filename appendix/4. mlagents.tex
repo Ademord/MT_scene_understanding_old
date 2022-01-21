@@ -1,0 +1,152 @@
+
+\section{Unity ML-Agents}\label{appendix:mlagents}
+
+\subsection{Visual Encoders}\label{appendix:visual-encoders}
+
+
+\subsection{PPO Trainers}\label{appendix:ppo-trainer}
+
+\begin{longtable}{@{} p{3.5cm} p{2.5cm} p{2.5cm} @{}} \toprule
+\textbf{Hyperparemeter}       & \textbf{Default Value} & \textbf{Typical Range} \\ \midrule
+visual encoder type         & simple    & - \\ 
+normalize                   & false     & - \\
+learning rate               & 3e-4      & 1e-5 - 1e-3 \\ 
+learning rate schedule      & linear    & linear, constant \\ 
+batch size                  &  1024     & 512 - 5120 \\
+max steps                   &  500000   & 5e5 - 1e7 \\ 
+buffer size                 & 10240     & 2048 - 409600 \\ 
+time horizon                &  64       & 32 - 2048  \\
+number of layers            &  2        & 1-3 \\
+hidden units                &  128      & 32-512 \\
+beta                        &  5.0e-3   & 1e-4 - 1e-2  \\
+epsilon                     &  0.2      & 0.1 - 0.3  \\
+lambda                      &  0.95     & 0.9 - 0.95  \\
+number of epochs            & 3         & 3 - 10 \\ \bottomrule
+% number of epochs                        & ROSTeat node is running. \\ \cmidrule{1-2} 
+% Exceptions             & Image is not RGB \\ \bottomrule
+\caption{Default hyperparameters in PPO trainer, taken from \cite{unitymlagentsgithub}} \label{tab:default-hyperparameters}
+% \\
+\end{longtable}
+
+\begin{minted}[
+    gobble=4,
+    frame=single,
+    linenos
+  ]{yaml}
+    # config file: run63++100.yaml
+    behaviors:
+      Drone:
+        trainer_type: ppo
+        hyperparameters:
+          batch_size: 1024
+          buffer_size: 10240
+          learning_rate: 0.0003
+          beta: 0.01
+          epsilon: 0.2
+          lambd: 0.95
+          num_epoch: 3
+          learning_rate_schedule: linear
+        network_settings:
+          normalize: false
+          hidden_units: 256
+          num_layers: 2
+          vis_encode_type: simple
+          # no lstm
+        reward_signals:
+          extrinsic:
+            gamma: 0.99
+            strength: 1.0
+          curiosity:
+            gamma: 0.99
+            strength: 0.02
+            network_settings:
+              hidden_units: 256
+            learning_rate: 0.0003
+        keep_checkpoints: 5
+        max_steps: 20000000
+        time_horizon: 64
+        summary_freq: 30000
+    environment_parameters:
+      EnvironmentType: 0 # 0:base, 1:open, 2:fire, 3:forest
+      steuernModus: 1
+      m_EnableVFX: 0
+      m_EnableTrainDebuggingLogs: 0
+      # for specific behaviors below: use template configs #
+      ###############  BEHAVIOR: VOXEL AGENT ###############
+      # base
+      m_TrainMovingForward: 1
+      m_TrainTargetSpeed: 1
+      # octree
+      leafNodeSize: 4
+      m_AddOctreeObservations: 0
+      m_TrainOctreeDiscovery: 0
+      m_TrainLingerPolicy: 0
+      m_AddPigeonObservations: 0
+      # voxel
+      m_TrainVoxelCollection: 1
+      allowedToSeeVoxels: 1
+      m_VoxelRewardStrength: 1
+      NormalizeVoxelReward: 0 
+      m_SpeedSensitivityToTargetsInFOV: 1 # enabled for all voxel-rewarded behaviors
+      # shortest
+      m_AddShortestPathObservations: 0
+      m_TrainShortestPath: 0
+      # detector
+      m_LoadDetector: 0
+      m_AddDetectorObservations: 0
+      m_TrainObjectDetectionMaximization: 0
+      NormalizeDetectionsReward: 1
+      # curiosity
+      m_AddSemanticCuriosityObservations: 0
+      m_TrainSemanticCuriosity: 0
+      # entropy
+      m_AddSemanticEntropyObservations: 0
+      m_TrainSemanticEntropy: 0
+      #################    END BEHAVIOR   ##################
+\end{minted}
+
+\subsection{Baselines and Evaluation Framework}\label{appendix:baselines}
+
+
+TODO\: insert explanation of each baseline
+
+
+TODO\: insert C# model diagram.
+
+\input{tables/baselines_tables}
+
+\subsection{In-depth Metrics}\label{appendix:indepth-metrics}
+The full list of in-depth metrics is listed below:
+\begin{itemize}
+    \item name
+    \item speed
+    \item linger
+    \item pigeon
+    \item pathak
+    \item constrained
+    \item node_size
+    \item train_octree_discovery
+    \item train_voxel_discovery
+    \item voxel_reward_str
+    \item voxel_vision
+    \item oracle
+    \item train_entropy
+    \item sac
+    \item n_leafNodes
+    \item n_leafNodes_y
+    \item leafNodeVolume
+    \item \%leafNodesExplored
+    \item \%scanNodesExplored
+    \item visual_analysis_confirms_best
+    \item \%episode_length
+    \item avg_total_objects_scanned
+\end{itemize}
+
+\subsection{Small Environment Results}
+\begin{figure}[!ht]
+        \centering
+        \includegraphics[width=1\textwidth]{images/results_baseAgent.png}
+        \caption{Small environment result (size: ) .
+        }
+        \label{fig:results-small-env-performances}
+\end{figure}
