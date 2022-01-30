@@ -1,86 +1,32 @@
-% \newpage
-\afterpage{%
-    % \newpage
-    \clearpage
-%     \thispagestyle{empty}
-    
-%         \AddToShipoutPictureBG*{%
-%   \AtPageLowerLeft{%
-%     \raisebox{\dimexpr.5\paperheight-.5\height}{%
-%       \makebox[.1\paperwidth][r]{%
-%         \rotatebox{90}{\thepage}
-%       }% \makebox
-%     }% \raisebox
-%   }% \AtPageCenter
-% }% \AddToShipoutPictureBG*
 
-        \begin{landscape}% Landscape page
+
+
+
+%4 % \newpage
+% \afterpage{%
+%     % \newpage
+%     \clearpage
+% %     \thispagestyle{empty}
+    
+% %         \AddToShipoutPictureBG*{%
+% %   \AtPageLowerLeft{%
+% %     \raisebox{\dimexpr.5\paperheight-.5\height}{%
+% %       \makebox[.1\paperwidth][r]{%
+% %         \rotatebox{90}{\thepage}
+% %       }% \makebox
+% %     }% \raisebox
+% %   }% \AtPageCenter
+% % }% \AddToShipoutPictureBG*
+
+%         \begin{landscape}% Landscape page
         % \centering
 
-        \begin{table}[]
-        \hspace{-\marginparsep}    
-        \hspace{-0.5\marginparwidth}
-        \resizebox{1.65\textwidth}{!}{%
-        \begin{tabular}{l|ccccccccc|l}
-        \cline{2-10}
-         & \multicolumn{9}{c|}{Observations per Baseline} &  \\ \hline
-        \multicolumn{1}{|l|}{Baseline} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Own \\ Information\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Octree \\ Observations\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Vision \\ of Voxels\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Pigeon \\ Observations\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Speed Sensitivity \\ to Targets in FOV\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Shortest Path\\  Observations\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Detector \\ Observations\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Semantic Curiosity \\ Observations\end{tabular}} & \begin{tabular}[c]{@{}c@{}}Semantic Entropy \\ Observations\end{tabular} & \multicolumn{1}{l|}{Comment} \\ \hline
-        \multicolumn{1}{|l|}{Random Walk} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Simple agent that observes its speed and position in 3D space.} \\ \hline
-        \multicolumn{1}{|l|}{Octree Agent} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that can observe the amount of octree nodes it discovers on timestep t.} \\ \hline
-        \multicolumn{1}{|l|}{Voxel (R\_VOX norm)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that can observe the voxels in the environment. Voxels reward is normalized.} \\ \hline
-        \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.25)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that can observe the voxels in the environment. Voxel reward strength is set to 25\%} \\ \hline
-        \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.50)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that can observe the voxels in the environment. Voxel reward strength is set to 50\%} \\ \hline
-        \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.75)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that can observe the voxels in the environment. Voxel reward strength is set to 75\%} \\ \hline
-        \multicolumn{1}{|l|}{Voxel (R\_VOX str: 1.00)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that can observe the voxels in the environment. Voxel reward strength is set to 100\%} \\ \hline
-        \multicolumn{1}{|l|}{Shortest Path + Vision} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that has more information about where the target is in 3D space and can observe voxels.} \\ \hline
-        \multicolumn{1}{|l|}{Shortest Path} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that has more information about where the target is in 3D space.} \\ \hline
-        \multicolumn{1}{|l|}{Object Detection + pure} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Simple agent that observes the output from the object detector.} \\ \hline
-        \multicolumn{1}{|l|}{Object Detection} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that observes the output from the object detector.} \\ \hline
-        \multicolumn{1}{|l|}{Semantic Curiosity} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} &  & \multicolumn{1}{l|}{Derived* agent that observes the rationalized class density present in the environment each timestep t.} \\ \hline
-        \multicolumn{1}{|l|}{Ultron (Semantic Entropy)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that observes the lingering penalty strength present in the environment each timestep t. Voxel reward is normalized.} \\ \hline
-        \multicolumn{1}{|l|}{Ultron (R\_VOX str: 0.5)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & ✔️ & \multicolumn{1}{l|}{Derived* agent as above. Voxel reward strength is set to 50\%} \\ \hline
-        \multicolumn{1}{|l|}{Ultron (R\_VOX str: 1.0)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & ✔️ & \multicolumn{1}{l|}{Derived* agent as above. Voxel reward strength is set to 100\%} \\ \hline
-        \end{tabular}%
-        }
-        \caption{Diverse agent behavior variants and the observations they receive.}
-        \label{appendix:baselines_observations}
-        \end{table}
+    %   CONTENT
         
-            % \usepackage{graphicx}
-       
-        \begin{table}[]
-        \hspace{-\marginparsep}    
-        \hspace{-0.5\marginparwidth}
-        \resizebox{1.65\textwidth}{!}{%
-            \begin{tabular}{l|cccccccc|l}
-            \cline{2-9}
-             & \multicolumn{8}{c|}{Rewards per Baseline} &  \\ \hline
-            \multicolumn{1}{|l|}{Baseline} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Train Moving \\ Forward\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Train \\ Speed\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Train Octree \\ Nodes Discovery\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Train Voxel \\ Discovery\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Train Shortest \\ Path\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Train Object \\ Detection\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Train Semantic \\ Curiosity\end{tabular}} & \begin{tabular}[c]{@{}c@{}}Train Semantic \\ Entropy\end{tabular} & \multicolumn{1}{l|}{Comment} \\ \hline
-            \multicolumn{1}{|l|}{Random Walk} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Simple agent that learns to move to reach a minimum target speed.} \\ \hline
-            \multicolumn{1}{|l|}{Octree Agent} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that learns how to discover octree nodes while it moves.} \\ \hline
-            \multicolumn{1}{|l|}{Voxel (R\_VOX norm)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{""                                                                                             ""} \\ \hline
-            \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.25)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{""                                                                                             ""} \\ \hline
-            \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.50)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{""                                                                                             ""} \\ \hline
-            \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.75)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{""                                                                                             ""} \\ \hline
-            \multicolumn{1}{|l|}{Voxel (R\_VOX str: 1.00)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{""                                                                                             ""} \\ \hline
-            \multicolumn{1}{|l|}{Shortest Path + Vision} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that learns to move directly to the next target. Found voxels provide a normalized reward.} \\ \hline
-            \multicolumn{1}{|l|}{Shortest Path} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that learns to move directly to the next target. Found voxels provide a normalized reward.} \\ \hline
-            \multicolumn{1}{|l|}{Object Detection + pure} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that learns how to maximize object detections. Found voxels provide a normalized reward.} \\ \hline
-            \multicolumn{1}{|l|}{Object Detection} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Derived* agent that learns how to maximize object detections. Found voxels provide a normalized reward.} \\ \hline
-            % \multicolumn{1}{|l|}{Semantic Curiosity} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} &  & \multicolumn{1}{l|}{Derived* agent that learns how to maximize the temporal class density.} \\ \hline
-            % \multicolumn{1}{|l|}{Ultron (Semantic Entropy)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & ✔️ & \multicolumn{1}{l|}{Derived* agent that learns how to discover octree nodes and scan voxels. Benefits from a lingering penalty strength regulator.} \\ \hline
-            % \multicolumn{1}{|l|}{Ultron (R\_VOX str: 0.5)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & ✔️ & \multicolumn{1}{l|}{Derived* agent as above. Voxel reward strength is set to 50\%} \\ \hline
-            % \multicolumn{1}{|l|}{Ultron (R\_VOX str: 1.0)} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{✔️} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & ✔️ & \multicolumn{1}{l|}{Derived* agent as above. Voxel reward strength is set to 100\%} \\ \hline
-            \end{tabular}%
-        }
-        \caption{Diverse agent behavior variants and the rewards they receive.}
-        \label{appendix:baselines_rewards}
-        \end{table}
-        
-        \end{landscape}
+%         \end{landscape}
     
 
-}
+% }
 
 
 

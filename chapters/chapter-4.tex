@@ -116,18 +116,18 @@ A brief overview of the aggregated results is shown below in Table \ref{tab:RQ1-
     % run63++100-nospeed	&	97	\%	&	1.52	&	0.20	\\ \hline
     % run63++100-nospeed-nolinger	&	98	\%	&	1.73	&	0.21	\\ \hline
     % run63-normalized	&	97	\%	&	0.40	&	0.22	\\ \hline
-run63++025 & 94 & {\cellcolor[HTML]{B6D8D1}} \color[HTML]{000000} 1.56 \\ \hline
-run63++100-nospeed & 98 & {\cellcolor[HTML]{BEDCD6}} \color[HTML]{000000} 1.52 \\ \hline
-run63++100-nospeed-nolinger & 97 & {\cellcolor[HTML]{98CAC0}} \color[HTML]{000000} 1.73 \\ \hline
-run63++100-nospeed-nolinger-oracle & 96 & {\cellcolor[HTML]{E0EDEA}} \color[HTML]{000000} 1.33 \\ \hline
-run63++100-nospeed-nolinger-oracle-8 & 99 & {\cellcolor[HTML]{90C6BB}} \color[HTML]{000000} 1.77 \\ \hline
-run63++100-nospeed-nolinger-pigeon-oracle-8 & 97 & {\cellcolor[HTML]{E6F0EE}} \color[HTML]{000000} 1.30 \\ \hline
-run63++100-nospeed-oracle-4 & 100 & {\cellcolor[HTML]{A9D2CA}} \color[HTML]{000000} 1.64 \\ \hline
-run63++100-nospeed-oracle-8-pigeon & 93 & {\cellcolor[HTML]{A1CFC5}} \color[HTML]{000000} 1.68 \\ \hline
-run65-pure-vision & 99 & {\cellcolor[HTML]{BADBD4}} \color[HTML]{000000} 1.54 \\ \hline
-run68++100-nospeed & 97 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 2.10 \\ \hline
-run68++100-oracle & 96 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 1.27 \\ \hline
-run68++100-oracle-nospeed & 98 & {\cellcolor[HTML]{B1D6CE}} \color[HTML]{000000} 1.59 \\ \hline
+voxel++025 & 94 & {\cellcolor[HTML]{B6D8D1}} \color[HTML]{000000} 1.56 \\ \hline
+voxel++100-nospeed & 98 & {\cellcolor[HTML]{BEDCD6}} \color[HTML]{000000} 1.52 \\ \hline
+voxel++100-nospeed-nolinger & 97 & {\cellcolor[HTML]{98CAC0}} \color[HTML]{000000} 1.73 \\ \hline
+voxel++100-nospeed-nolinger-oracle & 96 & {\cellcolor[HTML]{E0EDEA}} \color[HTML]{000000} 1.33 \\ \hline
+voxel++100-nospeed-nolinger-oracle-8 & 99 & {\cellcolor[HTML]{90C6BB}} \color[HTML]{000000} 1.77 \\ \hline
+voxel++100-nospeed-nolinger-pigeon-oracle-8 & 97 & {\cellcolor[HTML]{E6F0EE}} \color[HTML]{000000} 1.30 \\ \hline
+voxel++100-nospeed-oracle-4 & 100 & {\cellcolor[HTML]{A9D2CA}} \color[HTML]{000000} 1.64 \\ \hline
+voxel++100-nospeed-oracle-8-pigeon & 93 & {\cellcolor[HTML]{A1CFC5}} \color[HTML]{000000} 1.68 \\ \hline
+object-detector-pure-vision & 99 & {\cellcolor[HTML]{BADBD4}} \color[HTML]{000000} 1.54 \\ \hline
+voxel-entropy++100-nospeed & 97 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 2.10 \\ \hline
+voxel-entropy++100-oracle & 96 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 1.27 \\ \hline
+voxel-entropy++100-oracle-nospeed & 98 & {\cellcolor[HTML]{B1D6CE}} \color[HTML]{000000} 1.59 \\ \hline
 
 
     \caption{Overview of the best object-focused runs with knowledge of voxels respect to the \textit{Episode Length} and the \textit{Total Objects Scanned} metrics}. \label{tab:RQ1-results}
@@ -141,27 +141,27 @@ Table \ref{tab:results-RQ1-walkLook} shows the results for the total of voxels s
     & \thead{Total Detections Count} 
     & \thead{Walk Error} 
     & \thead{Look Error}   \\ \hline
-run63 & 0.04 & 0.48 & 0.42 \\ \hline
-run63++025 & 0.03 & 0.46 & 0.37 \\ \hline
-run63++050 & 0.03 & 0.48 & 0.47 \\ \hline
-run63++075 & 0.03 & 0.47 & 0.46 \\ \hline
-run63++100 & 0.03 & 0.47 & 0.44 \\ \hline
-run63++100-nospeed & 0.02 & 0.46 & 0.41 \\ \hline
-run63++100-nospeed-nolinger & 0.03 & 0.47 & 0.41 \\ \hline
-run63++100-nospeed-nolinger-oracle & 0.03 & 0.43 & 0.41 \\ \hline
-run63++100-nospeed-nolinger-oracle-8 & 0.03 & 0.41 & 0.42 \\ \hline
-run63++100-nospeed-nolinger-pigeon-oracle-8 & 0.03 & 0.43 & 0.43 \\ \hline0
-run63++100-nospeed-oracle-4 & 0.03 & 0.39 & 0.38 \\ \hline
-run63++100-nospeed-oracle-8 & 0.03 & 0.47 & 0.44 \\ \hline
-run63++100-nospeed-oracle-8-pigeon & 0.03 & 0.47 & 0.39 \\ \hline
-run64+vision & 0.03 & 0.42 & 0.43 \\ \hline
-run64+vision-nospeed & 0.05 & 0.20 & 0.22 \\ \hline
-run65-pure-vision & 0.04 & 0.46 & 0.42 \\ \hline
-run68++050 & 0.04 & 0.47 & 0.47 \\ \hline
-run68++100 & 0.03 & 0.48 & 0.43 \\ \hline
-run68++100-nospeed & 0.05 & 0.47 & 0.40 \\ \hline
-run68++100-oracle & 0.03 & 0.47 & 0.43 \\ \hline
-run68++100-oracle-nospeed & 0.03 & 0.44 & 0.38 \\ \hline
+voxel & 610597.65 & {\cellcolor[HTML]{EAF2F0}} \color[HTML]{000000} 0.48 & {\cellcolor[HTML]{CBE3DD}} \color[HTML]{000000} 0.42 \\ \hline
+voxel++025 & 426601.17 & {\cellcolor[HTML]{E0EDEA}} \color[HTML]{000000} 0.46 & {\cellcolor[HTML]{AAD3CB}} \color[HTML]{000000} 0.37 \\ \hline
+voxel++050 & 426814.30 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.48 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.47 \\ \hline
+voxel++075 & 377998.18 & {\cellcolor[HTML]{E4EFEC}} \color[HTML]{000000} 0.47 & {\cellcolor[HTML]{E2EEEB}} \color[HTML]{000000} 0.46 \\ \hline
+voxel++100 & 360373.23 & {\cellcolor[HTML]{E3EEEC}} \color[HTML]{000000} 0.47 & {\cellcolor[HTML]{D9EAE6}} \color[HTML]{000000} 0.44 \\ \hline
+voxel++100-nospeed & 315159.74 & {\cellcolor[HTML]{E2EEEB}} \color[HTML]{000000} 0.46 & {\cellcolor[HTML]{C7E1DB}} \color[HTML]{000000} 0.41 \\ \hline
+voxel++100-nospeed-nolinger & 425433.05 & {\cellcolor[HTML]{E5EFED}} \color[HTML]{000000} 0.47 & {\cellcolor[HTML]{C5E0DA}} \color[HTML]{000000} 0.41 \\ \hline
+voxel++100-nospeed-nolinger-oracle & 487909.34 & {\cellcolor[HTML]{D0E5E1}} \color[HTML]{000000} 0.43 & {\cellcolor[HTML]{C4E0DA}} \color[HTML]{000000} 0.41 \\ \hline
+voxel++100-nospeed-nolinger-oracle-8 & 322132.54 & {\cellcolor[HTML]{C7E1DB}} \color[HTML]{000000} 0.41 & {\cellcolor[HTML]{CBE3DD}} \color[HTML]{000000} 0.42 \\ \hline
+voxel++100-nospeed-nolinger-pigeon-oracle-8 & 459106.04 & {\cellcolor[HTML]{D1E6E1}} \color[HTML]{000000} 0.43 & {\cellcolor[HTML]{D4E7E3}} \color[HTML]{000000} 0.43 \\ \hline
+voxel++100-nospeed-oracle-4 & 394385.50 & {\cellcolor[HTML]{BADAD4}} \color[HTML]{000000} 0.39 & {\cellcolor[HTML]{B4D8D0}} \color[HTML]{000000} 0.38 \\ \hline
+voxel++100-nospeed-oracle-8 & 350206.56 & {\cellcolor[HTML]{E5EFED}} \color[HTML]{000000} 0.47 & {\cellcolor[HTML]{D8E9E5}} \color[HTML]{000000} 0.44 \\ \hline
+voxel++100-nospeed-oracle-8-pigeon & 436642.27 & {\cellcolor[HTML]{E3EFEC}} \color[HTML]{000000} 0.47 & {\cellcolor[HTML]{B6D9D1}} \color[HTML]{000000} 0.39 \\ \hline
+shortest-path+vision & 366012.80 & {\cellcolor[HTML]{CCE3DE}} \color[HTML]{000000} 0.42 & {\cellcolor[HTML]{D2E6E2}} \color[HTML]{000000} 0.43 \\ \hline
+shortest-path+vision-nospeed & 52246.62 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 0.20 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 0.22 \\ \hline
+object-detector-pure-vision & 305071.26 & {\cellcolor[HTML]{DEECE9}} \color[HTML]{000000} 0.46 & {\cellcolor[HTML]{C9E2DC}} \color[HTML]{000000} 0.42 \\ \hline
+voxel-entropy++050 & 289034.05 & {\cellcolor[HTML]{E3EFEC}} \color[HTML]{000000} 0.47 & {\cellcolor[HTML]{E7F0EE}} \color[HTML]{000000} 0.47 \\ \hline
+voxel-entropy++100 & 389918.38 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.48 & {\cellcolor[HTML]{D4E7E3}} \color[HTML]{000000} 0.43 \\ \hline
+voxel-entropy++100-nospeed & 329202.15 & {\cellcolor[HTML]{E5EFED}} \color[HTML]{000000} 0.47 & {\cellcolor[HTML]{C1DED8}} \color[HTML]{000000} 0.40 \\ \hline
+voxel-entropy++100-oracle & 335804.18 & {\cellcolor[HTML]{E3EFEC}} \color[HTML]{000000} 0.47 & {\cellcolor[HTML]{D1E6E1}} \color[HTML]{000000} 0.43 \\ \hline
+voxel-entropy++100-oracle-nospeed & 386769.90 & {\cellcolor[HTML]{D5E8E4}} \color[HTML]{000000} 0.44 & {\cellcolor[HTML]{B6D8D1}} \color[HTML]{000000} 0.38 \\ \hline
 
     \caption{Overview of the best runs with knowledge of voxels for the object exploration task, with respect to the \textit{Walk Error} and \textit{Look Error} metrics}.
     \label{tab:results-RQ1-walkLook}
@@ -169,47 +169,55 @@ run68++100-oracle-nospeed & 0.03 & 0.44 & 0.38 \\ \hline
 
 The explorative performance of the best voxel-curious methods are presented in Table \ref{tab:results-RQ1-explorative-performance}, which is given by metrics such as the amount of octree scan points, the leaf nodes visited and the lingering behavior.
 
-\begin{longtable}{|l|c|c|c|c|}                            \hline
-    % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
-    \thead{Method}            
-    & \thead{Octree \\ Scan Points} 
-    & \thead{Octree \\ Leaf Nodes Visited} 
-    & \thead{Lingering \\ Penalty Count}  
-    & \thead{Lingering \\ Penalty Strength} 
-    \\ \hline
-    % run61-voxel	&	36.15	&	10.07	&	24.67	&	0.95	\\ \hline
-    % run61-voxel-constrained	&	42.58	&	14.06	&	19.20	&	0.96	\\ \hline
-    % run63++025	&	\textbf{131.40}	&	\textbf{40.18}	&	\textbf{31.10}	&	0.95	        \\ \hline
-    % run63++050	&	83.43	&	28.41	                &	24.20	&   0.95	        \\ \hline
-    % run63++075	&	90.33	&	29.63	                &	11.27	&   0.96	        \\ \hline
-    % run63++100-nospeed-nolinger	&	119.59	&	36.28	&	\textbf{30.26}	&	0.95	        \\ \hline
-    % run63++100-nospeed	&	\textbf{126.73}	&	36.67	&	16.15	&	0.96	        \\ \hline
-    % run63++100	&	87.74	&	29.11	                &	\textbf{25.61}   &   0.96	        \\ \hline
-    % run63-normalized	&	97.68	&	31.45	        &	9.92    &   0.93	        \\ \hline
-run63 & {\cellcolor[HTML]{D6E8E4}} \color[HTML]{000000} 2.44 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.79 & 9.92 & 0.93 \\ \hline
-run63++025 & {\cellcolor[HTML]{CAE2DD}} \color[HTML]{000000} 3.28 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 1.00 & 31.10 & 0.95 \\ \hline
-run63++050 & {\cellcolor[HTML]{DCEBE7}} \color[HTML]{000000} 2.09 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.71 & 24.20 & 0.95 \\ \hline
-run63++075 & {\cellcolor[HTML]{D9EAE6}} \color[HTML]{000000} 2.26 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.74 & 11.27 & 0.96 \\ \hline
-run63++100 & {\cellcolor[HTML]{DAEAE6}} \color[HTML]{000000} 2.19 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.73 & 25.61 & 0.96 \\ \hline
-run63++100-nospeed & {\cellcolor[HTML]{CBE3DE}} \color[HTML]{000000} 3.17 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.92 & 16.15 & 0.96 \\ \hline
-run63++100-nospeed-nolinger & {\cellcolor[HTML]{CEE4E0}} \color[HTML]{000000} 2.99 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.91 & 30.26 & 0.95 \\ \hline
-run63++100-nospeed-nolinger-oracle & {\cellcolor[HTML]{D8E9E5}} \color[HTML]{000000} 2.34 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.64 & 42.49 & 0.94 \\ \hline
-run63++100-nospeed-nolinger-oracle-8 & {\cellcolor[HTML]{DBEBE7}} \color[HTML]{000000} 2.13 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.55 & 17.83 & 0.96 \\ \hline
-run63++100-nospeed-nolinger-pigeon-oracle-8 & {\cellcolor[HTML]{D9EAE6}} \color[HTML]{000000} 2.26 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.65 & 40.68 & 0.94 \\ \hline
-run63++100-nospeed-oracle-4 & {\cellcolor[HTML]{DCEBE8}} \color[HTML]{000000} 2.03 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.54 & 9.49 & 0.95 \\ \hline
-run63++100-nospeed-oracle-8 & {\cellcolor[HTML]{7FBEB1}} \color[HTML]{000000} 8.29 & {\cellcolor[HTML]{9ACBC1}} \color[HTML]{000000} 2.40 & 35.62 & 0.95 \\ \hline
-run63++100-nospeed-oracle-8-pigeon & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 11.12 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 3.58 & 35.48 & 0.94 \\ \hline
-run64+vision & {\cellcolor[HTML]{DCEBE8}} \color[HTML]{000000} 2.04 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.52 & 10.79 & 0.95 \\ \hline
-run64+vision-nospeed & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.96 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.21 & 98.00 & 0.91 \\ \hline
-run65-pure-vision & {\cellcolor[HTML]{DAEAE6}} \color[HTML]{000000} 2.19 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.66 & 15.57 & 0.93 \\ \hline
-run68++050 & {\cellcolor[HTML]{D4E7E3}} \color[HTML]{000000} 2.65 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.95 & 21.44 & 0.94 \\ \hline
-run68++100 & {\cellcolor[HTML]{D7E9E5}} \color[HTML]{000000} 2.39 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.86 & 24.58 & 0.95 \\ \hline
-run68++100-nospeed & {\cellcolor[HTML]{CEE4E0}} \color[HTML]{000000} 3.00 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.92 & 25.97 & 0.91 \\ \hline
-run68++100-oracle & {\cellcolor[HTML]{D5E8E4}} \color[HTML]{000000} 2.53 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.78 & 19.30 & 0.95 \\ \hline
-run68++100-oracle-nospeed & {\cellcolor[HTML]{D4E7E3}} \color[HTML]{000000} 2.65 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.79 & 24.72 & 0.95 \\ \hline
 
-    \caption{Overview of the best runs with knowledge of voxels for the object exploration task, with respect to the \textit{Octree Scan Points}, \textit{Octree Leaf Nodes Visited}, \textit{Lingering Penalty Strength} and \textit{Lingering Penalty Count} metrics}. \label{tab:results-RQ1-explorative-performance}
-\end{longtable}
+\begin{sidewaystable}
+
+    \begin{longtable}{|l|c|c|c|c|c|}                            \hline
+        % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
+        \thead{Method}            
+        & \thead{Octree \\ Scan Points} 
+        & \thead{Octree \\ Leaf Nodes Visited} 
+        & \thead{Average Total \\ Objects Scanned} 
+        & \thead{Octree Lingering \\ Penalty Count}  
+        & \thead{Octree Lingering \\ Penalty Strength} 
+        \\ \hline
+        % run61-voxel	&	36.15	&	10.07	&	24.67	&	0.95	\\ \hline
+        % run61-voxel-constrained	&	42.58	&	14.06	&	19.20	&	0.96	\\ \hline
+        % run63++025	&	\textbf{131.40}	&	\textbf{40.18}	&	\textbf{31.10}	&	0.95	        \\ \hline
+        % run63++050	&	83.43	&	28.41	                &	24.20	&   0.95	        \\ \hline
+        % run63++075	&	90.33	&	29.63	                &	11.27	&   0.96	        \\ \hline
+        % run63++100-nospeed-nolinger	&	119.59	&	36.28	&	\textbf{30.26}	&	0.95	        \\ \hline
+        % run63++100-nospeed	&	\textbf{126.73}	&	36.67	&	16.15	&	0.96	        \\ \hline
+        % run63++100	&	87.74	&	29.11	                &	\textbf{25.61}   &   0.96	        \\ \hline
+        % run63-normalized	&	97.68	&	31.45	        &	9.92    &   0.93	        \\ \hline
+voxel & {\cellcolor[HTML]{D6E8E4}} \color[HTML]{000000} 2.44 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.79 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.40 & 9.92 & 0.93 \\ \hline
+voxel++025 & {\cellcolor[HTML]{CAE2DD}} \color[HTML]{000000} 3.28 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 1.00 & {\cellcolor[HTML]{A1CFC5}} \color[HTML]{000000} 1.56 & 31.10 & 0.95 \\ \hline
+voxel++050 & {\cellcolor[HTML]{DCEBE7}} \color[HTML]{000000} 2.09 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.71 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 1.05 & 24.20 & 0.95 \\ \hline
+voxel++075 & {\cellcolor[HTML]{D9EAE6}} \color[HTML]{000000} 2.26 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.74 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.96 & 11.27 & 0.96 \\ \hline
+voxel++100 & {\cellcolor[HTML]{DAEAE6}} \color[HTML]{000000} 2.19 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.73 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.77 & 25.61 & 0.96 \\ \hline
+voxel++100-nospeed & {\cellcolor[HTML]{CBE3DE}} \color[HTML]{000000} 3.17 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.92 & {\cellcolor[HTML]{A7D1C9}} \color[HTML]{000000} 1.52 & 16.15 & 0.96 \\ \hline
+voxel++100-nospeed-nolinger & {\cellcolor[HTML]{CEE4E0}} \color[HTML]{000000} 2.99 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.91 & {\cellcolor[HTML]{89C3B7}} \color[HTML]{000000} 1.73 & 30.26 & 0.95 \\ \hline
+voxel++100-nospeed-nolinger-oracle & {\cellcolor[HTML]{D8E9E5}} \color[HTML]{000000} 2.34 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.64 & {\cellcolor[HTML]{C2DED8}} \color[HTML]{000000} 1.33 & 42.49 & 0.94 \\ \hline
+voxel++100-nospeed-nolinger-oracle-8 & {\cellcolor[HTML]{DBEBE7}} \color[HTML]{000000} 2.13 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.55 & {\cellcolor[HTML]{83C0B4}} \color[HTML]{000000} 1.77 & 17.83 & 0.96 \\ \hline
+voxel++100-nospeed-nolinger-pigeon-oracle-8 & {\cellcolor[HTML]{D9EAE6}} \color[HTML]{000000} 2.26 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.65 & {\cellcolor[HTML]{C7E1DB}} \color[HTML]{000000} 1.30 & 40.68 & 0.94 \\ \hline
+voxel++100-nospeed-oracle-4 & {\cellcolor[HTML]{DCEBE8}} \color[HTML]{000000} 2.03 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.54 & {\cellcolor[HTML]{96C9BF}} \color[HTML]{000000} 1.64 & 9.49 & 0.95 \\ \hline
+voxel++100-nospeed-oracle-8 & {\cellcolor[HTML]{7FBEB1}} \color[HTML]{000000} 8.29 & {\cellcolor[HTML]{9ACBC1}} \color[HTML]{000000} 2.40 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.56 & 35.62 & 0.95 \\ \hline
+voxel++100-nospeed-oracle-8-pigeon & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 11.12 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 3.58 & {\cellcolor[HTML]{90C7BC}} \color[HTML]{000000} 1.68 & 35.48 & 0.94 \\ \hline
+shortest-path+vision & {\cellcolor[HTML]{DCEBE8}} \color[HTML]{000000} 2.04 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.52 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.05 & 10.79 & 0.95 \\ \hline
+shortest-path+vision-nospeed & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.96 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.21 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.04 & 98.00 & 0.91 \\ \hline
+object-detector-pure-vision & {\cellcolor[HTML]{DAEAE6}} \color[HTML]{000000} 2.19 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.66 & {\cellcolor[HTML]{A4D0C7}} \color[HTML]{000000} 1.54 & 15.57 & 0.93 \\ \hline
+voxel-entropy++050 & {\cellcolor[HTML]{D4E7E3}} \color[HTML]{000000} 2.65 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.95 & {\cellcolor[HTML]{DEECE9}} \color[HTML]{000000} 1.13 & 21.44 & 0.94 \\ \hline
+voxel-entropy++100 & {\cellcolor[HTML]{D7E9E5}} \color[HTML]{000000} 2.39 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.86 & {\cellcolor[HTML]{E5EFED}} \color[HTML]{000000} 1.08 & 24.58 & 0.95 \\ \hline
+voxel-entropy++100-nospeed & {\cellcolor[HTML]{CEE4E0}} \color[HTML]{000000} 3.00 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.92 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 2.10 & 25.97 & 0.91 \\ \hline
+voxel-entropy++100-oracle & {\cellcolor[HTML]{D5E8E4}} \color[HTML]{000000} 2.53 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.78 & {\cellcolor[HTML]{CBE3DD}} \color[HTML]{000000} 1.27 & 19.30 & 0.95 \\ \hline
+voxel-entropy++100-oracle-nospeed & {\cellcolor[HTML]{D4E7E3}} \color[HTML]{000000} 2.65 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.79 & {\cellcolor[HTML]{9DCDC3}} \color[HTML]{000000} 1.59 & 24.72 & 0.95 \\ \hline
+    
+        \caption{Overview of the best runs with knowledge of voxels for the object exploration task, with respect to the \textit{Octree Scan Points}, \textit{Octree Leaf Nodes Visited}, \textit{Lingering Penalty Strength} and \textit{Lingering Penalty Count} metrics}. \label{tab:results-RQ1-explorative-performance}
+    \end{longtable}
+
+
+\end{sidewaystable}
+
 
 % \begin{longtable}{|l|c|c|c|c|}                            \hline
 % % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
@@ -227,30 +235,27 @@ run68++100-oracle-nospeed & {\cellcolor[HTML]{D4E7E3}} \color[HTML]{000000} 2.65
 The following Table \ref{tab:RQ1-results-noknowledgeofvoxels} presents the aggregated results for the agents that get rewarded for finding voxels but are not able to see them in the grid sensor view.
 % is shown below in Table , which also shows the general performance of the algorithms for the voxel scanning task.
 
-\begin{longtable}{|l|c|c|c|}                            \hline
+\begin{longtable}{|l|c|c|c|c|}                            \hline
     % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
     \thead{Method}            
     & \thead{Episode Length}                
-    & \thead{Average Total Objects Scanned}  
-    & \thead{Standard Deviation}            \\ \hline
-    random-agent	&	89	\%	&	1.56	&	0.24	\\ \hline
-    run61-voxel	&	100	\%	&	0.34	&	0.10	\\ \hline
-    run61-voxel-constrained	&	100	\%	&	0.33	&	0.11	\\ \hline
-    run64	&	100	\%	&	0.33	&	0.11	\\ \hline
-    run64	&	100	\%	&	0.33	&	0.11	\\ \hline
-    run64	&	100	\%	&	0.33	&	0.11	\\ \hline
-    run65	&	100	\%	&	0.33	&	0.11	\\ \hline
-    run65	&	100	\%	&	0.33	&	0.11	\\ \hline
-    run66	&	100	\%	&	0.33	&	0.11	\\ \hline
-    run67	&	100	\%	&	0.33	&	0.11	\\ \hline
+    & \thead{Average Total \\ Objects Scanned}   
+    & \thead{Total \\ Detections Count} 
+    % & \thead{Standard Deviation}            
+    \\ \hline
+    random-agent	&	89	\%	& {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1}	1.56    & ???	\\ \hline % 	&	0.24
+shortest-path & 97 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.06 & {\cellcolor[HTML]{A5D1C8}} \color[HTML]{000000} 387956.37 \\ \hline
+semantic-curiosity & 99 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.07 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 831982.04 \\ \hline
+semantic-entropy & 40 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.13 & {\cellcolor[HTML]{C4E0DA}} \color[HTML]{000000} 217608.01 \\ \hline
+blind-agent-voxel-constrained & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.33 & {\cellcolor[HTML]{ACD4CC}} \color[HTML]{000000} 350545.99 \\ \hline
+blind-agent-voxel & 99 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.34 & {\cellcolor[HTML]{99CBC1}} \color[HTML]{000000} 452437.65 \\ \hline
+object-detector & 97 & {\cellcolor[HTML]{E5EFED}} \color[HTML]{000000} 0.39 & {\cellcolor[HTML]{79BCAE}} \color[HTML]{000000} 627828.14 \\ \hline
+object-detector-pure & 93 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 1.01 & {\cellcolor[HTML]{9DCDC3}} \color[HTML]{000000} 433438.51 \\ \hline
+
     \caption{Overview of the best object-focused runs without knowledge of voxels with respect to the \textit{Episode Length} and the \textit{Total Objects Scanned} metrics}. \label{tab:RQ1-results-noknowledgeofvoxels}
 \end{longtable}
 
 Further Tables related to these agents can be found in Appendix \ref{appendix:RQ1-results-noknowledgeofvoxels}.
-
-
-
-
 
 
 

@@ -28,6 +28,7 @@ number of epochs            & 3         & 3 - 10 \\ \bottomrule
 % \\
 \end{longtable}
 
+
 \begin{minted}[
     gobble=4,
     frame=single,
@@ -105,15 +106,185 @@ number of epochs            & 3         & 3 - 10 \\ \bottomrule
       #################    END BEHAVIOR   ##################
 \end{minted}
 
-\subsection{Baselines and Evaluation Framework}\label{appendix:baselines}
-
-
-TODO\: insert explanation of each baseline
 
 
 TODO\: insert C# model diagram.
 
-\input{tables/baselines_tables}
+\newpage{%
+
+\begin{sidewaystable}
+\subsection{Agent Definitions by Observations}\label{appendix:baselines}
+ 
+    % \hspace{-\marginparsep}    
+    % \hspace{-0.5\marginparwidth}
+  
+    \begin{longtable}{l|ccccccccc|l}
+    \cline{2-10}
+     & \multicolumn{9}{c|}{Obs. per Baseline} &  \\ \hline
+    \multicolumn{1}{|l|}{Baseline} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Own \\ Info.\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Octree \\ Obs.\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Voxel \\ Vision\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Pigeon\\ Obs.\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Speed \\ Sensitivity \\ to FOV\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Shortest \\ Path\\  Obs.\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Detector \\ Obs.\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Semantic \\ Curiosity \\ Obs.\end{tabular}} & \begin{tabular}[c]{@{}c@{}}Semantic \\ Entropy \\ Obs.\end{tabular} & \multicolumn{1}{l|}{Comment} \\ \hline
+    
+    \multicolumn{1}{|l|}{Random Walk} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}
+    {Simple agent with obs: speed and position in 3D space.} \\ \hline
+    
+    \multicolumn{1}{|l|}{Octree Agent} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}
+    {DA with discovered octree nodes count each timestep.} \\ \hline
+    
+    \multicolumn{1}{|l|}{Voxel (R\_VOX norm)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{
+    DA that observes voxels with a normalized reward.} \\ \hline
+    
+    \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.25)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{
+    DA that observes voxels with a reward strength of 25\%} \\ \hline
+    
+    \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.50)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{
+    DA that observes voxels with a reward strength of 50\%} \\ \hline
+    
+    \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.75)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{
+    DA that observes voxels with a reward strength of 75\%} \\ \hline
+    
+    \multicolumn{1}{|l|}{Voxel (R\_VOX str: 1.00)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{
+    DA that observes voxels with a reward strength of 100\%} \\ \hline
+    
+    \multicolumn{1}{|l|}{Shortest Path} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{
+    DA with walk angle and look angle to target.} \\ \hline
+
+    \multicolumn{1}{|l|}{Shortest Path + Vision} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{
+    DA with voxel vision.} \\ \hline
+    
+    \multicolumn{1}{|l|}{Object Detection} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{
+    Simple agent with input from object detector.} \\ \hline
+
+    \multicolumn{1}{|l|}{Object Detection + pure} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{
+    Simple agent without speed constraint.} \\ \hline
+    
+    \multicolumn{1}{|l|}{Semantic Curiosity} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} &  & \multicolumn{1}{l|}{
+    DA with rationalized class density each timestep.} \\ \hline
+    
+    \multicolumn{1}{|l|}{Semantic Entropy} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{
+    DA with lingering penalty strength present reduction.} \\ \hline
+    
+    \multicolumn{1}{|l|}{Explorer (R\_VOX str: 0.5)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \emoji{x} & \multicolumn{1}{l|}
+    {DA as above. Voxel reward strength of 50\%} \\ \hline
+    
+    \multicolumn{1}{|l|}{Explorer (R\_VOX str: 1.0)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \emoji{x} & \multicolumn{1}{l|}
+    {DA as above. Voxel reward strength of 100\%} \\ \hline
+    
+    \caption{Diverse agent behavior variants and the observations they receive. "DA" stands for Derived Agent. All agents observe their own information, such as 3D position, orientation, etc.}
+    \label{appendix:baselines_observations}
+    
+    \end{longtable}%
+
+        % \usepackage{graphicx}
+       
+\end{sidewaystable}
+}
+
+\newpage{%
+
+\begin{sidewaystable}
+\subsection{Agent Definitions by Rewards}
+ 
+    % \hspace{-\marginparsep}    
+    % \hspace{-0.5\marginparwidth}
+  
+    \begin{longtable}{l|ccccccc|l}
+    \cline{2-8}
+             & \multicolumn{7}{c|}{Trained Functions} &  \\ \hline
+            %  \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}} Moving \\ Forward\end{tabular}}
+            \multicolumn{1}{|l|}{Baseline}  & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}} Speed\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}  Octree \\ Nodes\\  Discovery\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}} Voxel \\ Discovery\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}} Shortest \\ Path\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}} Object \\ Detection\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}} Semantic \\ Curiosity\end{tabular}} & \begin{tabular}[c]{@{}c@{}} Semantic \\ Entropy\end{tabular} & \multicolumn{1}{l|}{Comment} \\ \hline
+            
+            \multicolumn{1}{|l|}{Random Walk}  & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}
+            {Simple that moves at a minimum target speed.} \\ \hline
+            
+            \multicolumn{1}{|l|}{Octree Agent} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}
+            {DA that explores new (octree) locations.} \\ \hline
+            
+            \multicolumn{1}{|l|}{Voxel (R\_VOX norm)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}
+            {""                               ""} \\ \hline
+            
+            \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.25)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}
+            {""                               ""} \\ \hline
+        
+            \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.50)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}
+            {""                               ""} \\ \hline
+        
+            \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.75)}  & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}
+            {""                               ""} \\ \hline
+        
+            \multicolumn{1}{|l|}{Voxel (R\_VOX str: 1.00)}  & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}
+            {""                               ""} \\ \hline
+        
+            \multicolumn{1}{|l|}{Shortest Path}  & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}
+            {DA that learns to move to the closest target.} \\ \hline
+        
+            
+            \multicolumn{1}{|l|}{Shortest Path + Vision} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}
+            {DA with voxel vision.} \\ \hline
+        
+            
+            \multicolumn{1}{|l|}{Object Detection} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}
+            {DA that maximizes object detections.} \\ \hline
+            
+            \multicolumn{1}{|l|}{Object Detection + pure} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}
+            {DA with no minimum speed penalty.} \\ \hline
+        % . Found voxels provide a normalized reward.}
+            
+            \multicolumn{1}{|l|}{Semantic Curiosity}  & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} &  & \multicolumn{1}{l|}
+            {DA that maximizes the temporal class density.} \\ \hline
+            
+            \multicolumn{1}{|l|}{Ultron (Semantic Entropy)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \emoji{x} & \multicolumn{1}{l|}
+            {Voxel-DA with a lingering penalty regulator.} \\ \hline
+            
+            \multicolumn{1}{|l|}{Explorer (R\_VOX str: 0.5)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \emoji{x} & \multicolumn{1}{l|}
+            {Explorer DA for voxels and octrees.} \\ \hline
+            
+            \multicolumn{1}{|l|}{Explorer (R\_VOX str: 1.0)}  & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \emoji{x} & \multicolumn{1}{l|}
+            {Explorer DA for voxels and octrees.} \\ \hline
+            
+    
+    \caption{Diverse agent behavior variants and the rewards they receive. "DA" stands for Derived Agent.}
+    \label{appendix:baselines_observations}
+    
+    \end{longtable}%
+
+        % \usepackage{graphicx}
+       
+\end{sidewaystable}
+}
+% \begin{sidewaystable}
+ 
+%  \begin{table}[]
+%         \hspace{-\marginparsep}    
+%         \hspace{-0.5\marginparwidth}
+%         \resizebox{1.65\textwidth}{!}{%
+%             \begin{tabular}{l|cccccccc|l}
+%             \cline{2-9}
+%              & \multicolumn{8}{c|}{Rewards per Baseline} &  \\ \hline
+%             \multicolumn{1}{|l|}{Baseline} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Train Moving \\ Forward\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}} Speed\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Train Octree \\ Nodes Discovery\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Train Voxel \\ Discovery\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Train Shortest \\ Path\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Train Object \\ Detection\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Train Semantic \\ Curiosity\end{tabular}} & \begin{tabular}[c]{@{}c@{}}Train Semantic \\ Entropy\end{tabular} & \multicolumn{1}{l|}{Comment} \\ \hline
+%             \multicolumn{1}{|l|}{Random Walk} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{Simple agent that learns to move to reach a minimum target speed.} \\ \hline
+%             \multicolumn{1}{|l|}{Octree Agent} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{DA that learns how to discover octree nodes while it moves.} \\ \hline
+%             \multicolumn{1}{|l|}{Voxel (R\_VOX norm)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{""                                                                                             ""} \\ \hline
+%             \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.25)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{""                                                                                             ""} \\ \hline
+%             \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.50)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{""                                                                                             ""} \\ \hline
+%             \multicolumn{1}{|l|}{Voxel (R\_VOX str: 0.75)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{""                                                                                             ""} \\ \hline
+%             \multicolumn{1}{|l|}{Voxel (R\_VOX str: 1.00)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{""                                                                                             ""} \\ \hline
+%             \multicolumn{1}{|l|}{Shortest Path + Vision} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{DA that learns to move directly to the next target. Found voxels provide a normalized reward.} \\ \hline
+%             \multicolumn{1}{|l|}{Shortest Path} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{DA that learns to move directly to the next target. Found voxels provide a normalized reward.} \\ \hline
+%             \multicolumn{1}{|l|}{Object Detection + pure} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{DA that learns how to maximize object detections. Found voxels provide a normalized reward.} \\ \hline
+%             \multicolumn{1}{|l|}{Object Detection} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} &  & \multicolumn{1}{l|}{DA that learns how to maximize object detections. Found voxels provide a normalized reward.} \\ \hline
+%             % \multicolumn{1}{|l|}{Semantic Curiosity} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} &  & \multicolumn{1}{l|}{DA that learns how to maximize the temporal class density.} \\ \hline
+%             % \multicolumn{1}{|l|}{Ultron (Semantic Entropy)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \emoji{x} & \multicolumn{1}{l|}{DA that learns how to discover octree nodes and scan voxels. Benefits from a lingering penalty strength regulator.} \\ \hline
+%             % \multicolumn{1}{|l|}{Ultron (R\_VOX str: 0.5)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \emoji{x} & \multicolumn{1}{l|}{DA as above. Voxel reward strength of 50\%} \\ \hline
+%             % \multicolumn{1}{|l|}{Ultron (R\_VOX str: 1.0)} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{\emoji{x}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \emoji{x} & \multicolumn{1}{l|}{DA as above. Voxel reward strength of 100\%} \\ \hline
+%             \end{tabular}%
+%         }
+%         \caption{Diverse agent behavior variants and the rewards they receive.}
+%         \label{appendix:baselines_rewards}
+%         \end{table}
+        
+% \end{sidewaystable}
+
+
+\newpage
 
 \subsection{In-depth Metrics}\label{appendix:indepth-metrics}
 The full list of in-depth metrics is listed below:
@@ -142,7 +313,55 @@ The full list of in-depth metrics is listed below:
     \item avg_total_objects_scanned
 \end{itemize}
 
-\subsection{Agents without Knowledge of Voxels}\label{appendix:RQ1-results-noknowledgeofvoxels}
+\begin{sidewaystable}
+\subsection{Voxel-focused Agents}\label{appendix:RQ1-results-noknowledgeofvoxels}
+
+\begin{longtable}{|l|c|c|c|c|c|}                            \hline
+    % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
+    \thead{Method}            
+    & \thead{Episode Length}                
+    & \thead{Average Total \\ Objects Scanned}   
+    & \thead{Modified \\ F1-score} 
+    & \thead{Octree \\ Leaf Nodes Visited} 
+    & \thead{Walk Error} 
+    % & \thead{Total Detections Count} 
+    \\ \hline
+
+shortest-path+vision-nospeed & 88 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.04 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.01 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.06 & 	{\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 0.20 \\ \hline
+shortest-path+vision & 94 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.05 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.02 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.15 & 	{\cellcolor[HTML]{C8E1DC}} \color[HTML]{000000} 0.42 \\ \hline
+shortest-path & 97 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.06 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.02 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.12 & 	{\cellcolor[HTML]{CFE5E0}} \color[HTML]{000000} 0.44 \\ \hline
+semantic-curiosity & 99 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.07 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.02 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.10 & 	{\cellcolor[HTML]{D6E8E4}} \color[HTML]{000000} 0.45 \\ \hline
+semantic-entropy & 40 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.13 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.04 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.11 & 	{\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.49 \\ \hline
+voxel & 89 & {\cellcolor[HTML]{D8E9E5}} \color[HTML]{000000} 0.40 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.10 & {\cellcolor[HTML]{E0EDEA}} \color[HTML]{000000} 0.22 & 	{\cellcolor[HTML]{E4EFEC}} \color[HTML]{000000} 0.48 \\ \hline
+object-detector & 97 & {\cellcolor[HTML]{D9E9E6}} \color[HTML]{000000} 0.39 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.12 & {\cellcolor[HTML]{D1E6E1}} \color[HTML]{000000} 0.30 & 	{\cellcolor[HTML]{E2EEEB}} \color[HTML]{000000} 0.47 \\ \hline
+blind-agent-voxel & 99 & {\cellcolor[HTML]{DDEBE8}} \color[HTML]{000000} 0.34 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.13 & {\cellcolor[HTML]{A3CFC6}} \color[HTML]{000000} 0.56 & 	{\cellcolor[HTML]{DBEBE7}} \color[HTML]{000000} 0.46 \\ \hline
+voxel++100-nospeed-oracle-4 & 99 & {\cellcolor[HTML]{79BBAE}} \color[HTML]{000000} 1.64 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.13 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.15 & 	{\cellcolor[HTML]{B6D8D1}} \color[HTML]{000000} 0.39 \\ \hline
+voxel++100-nospeed-nolinger-oracle-8 & 99 & {\cellcolor[HTML]{6EB6A7}} \color[HTML]{F1F1F1} 1.77 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.13 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.15 & 	{\cellcolor[HTML]{C3DFD9}} \color[HTML]{000000} 0.41 \\ \hline
+blind-agent-voxel-constrained & 100 & {\cellcolor[HTML]{DEECE9}} \color[HTML]{000000} 0.33 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.13 & {\cellcolor[HTML]{7BBCAF}} \color[HTML]{000000} 0.79 & 	{\cellcolor[HTML]{E2EEEB}} \color[HTML]{000000} 0.47 \\ \hline
+voxel++100 & 96 & {\cellcolor[HTML]{BCDCD5}} \color[HTML]{000000} 0.77 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.13 & {\cellcolor[HTML]{E3EEEC}} \color[HTML]{000000} 0.20 & 	{\cellcolor[HTML]{DEECE8}} \color[HTML]{000000} 0.47 \\ \hline
+voxel++100-nospeed-nolinger-oracle & 95 & {\cellcolor[HTML]{90C6BB}} \color[HTML]{000000} 1.33 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.14 & {\cellcolor[HTML]{E7F0EE}} \color[HTML]{000000} 0.18 & 	{\cellcolor[HTML]{CBE3DE}} \color[HTML]{000000} 0.43 \\ \hline
+voxel++100-nospeed-nolinger-pigeon-oracle-8 & 97 & {\cellcolor[HTML]{93C8BD}} \color[HTML]{000000} 1.30 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.14 & {\cellcolor[HTML]{E7F0EE}} \color[HTML]{000000} 0.18 & 	{\cellcolor[HTML]{CCE3DF}} \color[HTML]{000000} 0.43 \\ \hline
+voxel++050 & 71 & {\cellcolor[HTML]{A6D1C8}} \color[HTML]{000000} 1.05 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.14 & {\cellcolor[HTML]{E3EFEC}} \color[HTML]{000000} 0.20 & 	{\cellcolor[HTML]{E6F0ED}} \color[HTML]{000000} 0.48 \\ \hline
+object-detector-pure & 93 & {\cellcolor[HTML]{A9D2CA}} \color[HTML]{000000} 1.01 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.14 & {\cellcolor[HTML]{E3EEEC}} \color[HTML]{000000} 0.20 & 	{\cellcolor[HTML]{E1EDEA}} \color[HTML]{000000} 0.47 \\ \hline
+voxel++075 & 98 & {\cellcolor[HTML]{ADD4CC}} \color[HTML]{000000} 0.96 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.14 & {\cellcolor[HTML]{E2EEEB}} \color[HTML]{000000} 0.21 & 	{\cellcolor[HTML]{DFECE9}} \color[HTML]{000000} 0.47 \\ \hline
+object-detector-pure-vision & 99 & {\cellcolor[HTML]{80BFB2}} \color[HTML]{000000} 1.54 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.15 & {\cellcolor[HTML]{E6F0EE}} \color[HTML]{000000} 0.18 & 	{\cellcolor[HTML]{D9EAE6}} \color[HTML]{000000} 0.46 \\ \hline
+voxel-entropy++100-oracle & 96 & {\cellcolor[HTML]{95C9BE}} \color[HTML]{000000} 1.27 & {\cellcolor[HTML]{E8F1EF}} \color[HTML]{000000} 0.16 & {\cellcolor[HTML]{E0EDEA}} \color[HTML]{000000} 0.22 & 	{\cellcolor[HTML]{DEECE9}} \color[HTML]{000000} 0.47 \\ \hline
+voxel-entropy++100 & 89 & {\cellcolor[HTML]{A3D0C7}} \color[HTML]{000000} 1.08 & {\cellcolor[HTML]{E7F0EE}} \color[HTML]{000000} 0.16 & {\cellcolor[HTML]{DCEBE8}} \color[HTML]{000000} 0.24 & 	{\cellcolor[HTML]{E5EFED}} \color[HTML]{000000} 0.48 \\ \hline
+voxel-entropy++100-oracle-nospeed & 98 & {\cellcolor[HTML]{7CBDB0}} \color[HTML]{000000} 1.59 & {\cellcolor[HTML]{E3EEEC}} \color[HTML]{000000} 0.17 & {\cellcolor[HTML]{DFEDE9}} \color[HTML]{000000} 0.22 & 	{\cellcolor[HTML]{D1E5E1}} \color[HTML]{000000} 0.44 \\ \hline
+voxel-entropy++050 & 98 & {\cellcolor[HTML]{A0CEC4}} \color[HTML]{000000} 1.13 & {\cellcolor[HTML]{DFEDE9}} \color[HTML]{000000} 0.18 & {\cellcolor[HTML]{D8E9E5}} \color[HTML]{000000} 0.26 & 	{\cellcolor[HTML]{DEECE9}} \color[HTML]{000000} 0.47 \\ \hline
+voxel++100-nospeed & 98 & {\cellcolor[HTML]{82C0B3}} \color[HTML]{000000} 1.52 & {\cellcolor[HTML]{D9EAE6}} \color[HTML]{000000} 0.19 & {\cellcolor[HTML]{D9EAE6}} \color[HTML]{000000} 0.26 & 	{\cellcolor[HTML]{DCEBE8}} \color[HTML]{000000} 0.46 \\ \hline
+voxel++100-nospeed-oracle-8 & 94 & {\cellcolor[HTML]{CCE3DE}} \color[HTML]{000000} 0.56 & {\cellcolor[HTML]{D8E9E5}} \color[HTML]{000000} 0.19 & {\cellcolor[HTML]{8FC6BB}} \color[HTML]{000000} 0.67 & 	{\cellcolor[HTML]{DFEDE9}} \color[HTML]{000000} 0.47 \\ \hline
+voxel++100-nospeed-nolinger & 97 & {\cellcolor[HTML]{71B8A9}} \color[HTML]{F1F1F1} 1.73 & {\cellcolor[HTML]{D7E9E5}} \color[HTML]{000000} 0.19 & {\cellcolor[HTML]{DAEAE6}} \color[HTML]{000000} 0.25 & 	{\cellcolor[HTML]{DFEDE9}} \color[HTML]{000000} 0.47 \\ \hline
+voxel++025 & 94 & {\cellcolor[HTML]{7EBEB1}} \color[HTML]{000000} 1.56 & {\cellcolor[HTML]{D2E6E2}} \color[HTML]{000000} 0.20 & {\cellcolor[HTML]{D5E7E3}} \color[HTML]{000000} 0.28 & 	{\cellcolor[HTML]{DBEAE7}} \color[HTML]{000000} 0.46 \\ \hline
+voxel-entropy++100-nospeed & 96 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 2.10 & {\cellcolor[HTML]{D1E6E1}} \color[HTML]{000000} 0.20 & {\cellcolor[HTML]{D9E9E6}} \color[HTML]{000000} 0.26 & 	{\cellcolor[HTML]{E0EDEA}} \color[HTML]{000000} 0.47 \\ \hline
+voxel++100-nospeed-oracle-8-pigeon & 93 & {\cellcolor[HTML]{75BAAC}} \color[HTML]{000000} 1.68 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 0.44 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 1.00 & 	{\cellcolor[HTML]{DEECE9}} \color[HTML]{000000} 0.47 \\ \hline
+
+
+    \caption{Overview of the best object-focused runs without knowledge of voxels with respect to the \textit{Episode Length} and the \textit{Total Objects Scanned} metrics}. \label{tab:RQ1-results-noknowledgeofvoxels}
+\end{longtable}
+
+\end{sidewaystable}
+
 
 
 \subsection{Small Environment Results}
