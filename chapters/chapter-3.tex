@@ -960,7 +960,7 @@ results and comparisons are presented in Chapter \ref{chap:4}.
 \section{Further Use of Results}\label{chap:3:further-use}
 As stated by \textcite{luckert2016using}, the last step of every knowledge discovery process is the application of the achieved results for further use. In this thesis work, this is of special importance, where the main focus was the exploration of unknown 3D environments and the actual performance of our approach compared to a set of baselines is carried out. This section introduces the baselines that were determined to evaluate our approach, the environments were the exploration policy is deemed most useful, and the utility provided by the development with ML-Agents to perform cross-environment exploration.
 
-\subsection{Evaluation Framework}
+\subsection{Evaluation Framework}\label{chap:3:further-use:evaluation-framework}
 For the evaluation of the baseline methods and the proposed methods, we constructed two variations of the open world environment. These environment serve as testing grounds for the best performing methods from the preliminary trainings. These “DARPA Unity Scenes" are identical in dimensions and modeling but they evaluate two separate behaviors. The first environment evaluates the object-exploration capabilities of the agent through a sequential three-goal setup as shown in Figure \ref{}. The DARPA subterranean challenge \cite{darpa_subterranean_challenge} inspired the concept for these environments, where the following metrics are used to evaluate the performance of the object-exploration behavior:
 \begin{multicols}{2}
     \begin{itemize}
@@ -1031,9 +1031,10 @@ Finally, the qualifying runs are then evaluated on the DARPA environments where 
 % \newpage
 
 \subsection{Usability}
-\subsubsection{Goal Scenarios}\label{chap:3:further-generalization}
-
-The working steps to answer the research questions summarize themselves into a policy capable of exploring any proposed 3D scene. Therefore, multiple scenes are to be considered where the agent's behavior could contribute to. Example scenes include a stable, a traffic accident, a neighborhood fire, a forest accident, etc.
+\subsubsection{Applicable Practical Scenarios}\label{chap:3:further-generalization}
+Part of the value behind the research questions also is reflected in the applicability of the proposed methods to a variety of scenarios. 
+% The working steps to answer the research questions summarize themselves also into a policy capable of exploring any proposed 3D scene. 
+Therefore, multiple scenes were considered to demonstrate the further use of the agent's behavior in production. Example scenes include a stable, a traffic accident, a neighborhood fire, a forest accident, etc.
 
 \subsubsection{Cross-Platform Performance}\label{chap:3:further-generalization}
 % In order to additionally demonstrate the value of using Unity ML-Agents

@@ -41,6 +41,8 @@
 \usepackage{graphicx,nicefrac}
 % \usepackage{subcaption}
 \usepackage{can  cel}
+% \usepackage[table]{xcolor}
+
 
 \newtcolorbox{definitioni}{
   breakable,
@@ -88,12 +90,12 @@ sorting=none
 \addbibresource{report.bib} %Imports bibliography file
 
 \usepackage{minted}
-\usepackage{makecell}
-
-\renewcommand\theadalign{bc}
-\renewcommand\theadfont{\bfseries}
-\renewcommand\theadgape{\Gape[4pt]}
-\renewcommand\cellgape{\Gape[4pt]}
+% defined below.... dont repeat..
+% \usepackage{makecell}
+% \renewcommand\theadalign{bc}
+% \renewcommand\theadfont{\bfseries}
+% \renewcommand\theadgape{\Gape[4pt]}
+% \renewcommand\cellgape{\Gape[4pt]}
 
 
 
@@ -145,6 +147,8 @@ sorting=none
 \renewcommand\theadfont{\bfseries}
 \renewcommand\theadgape{\Gape[2pt]}
 \renewcommand\cellgape{\Gape[2pt]}
+% \newcommand*{\thead}[1]{%
+% \multicolumn{1}{c}{\bfseries\begin{tabular}{@{}c@{}}#1\end{tabular}}}
 
 \begin{document}
 %% Use Roman numerals for the page numbers of the title pages and table of

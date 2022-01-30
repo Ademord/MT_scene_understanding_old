@@ -92,90 +92,124 @@ This section presents the results of the experiments. Section \ref{chap:4:result
 
 \subsection{Research Question 1}\label{chap:4:results-RQ1}
 
-The first research question focuses on the reduction of uncertainty about objects, which we have posed as a voxel-curiosity task. Below, the best results for each voxel-curious variant are be presented. Detailed information about each run can be found in Appendix \ref{appendix:baselines}.
+The first research question focuses on the reduction of uncertainty about objects, which we have posed as a voxel-curiosity task. Below, the best results for each voxel-curious variant are be presented in two subsections according to if the model has knowledge of voxels. Detailed information about each run can be found in Appendix \ref{appendix:baselines}.
 
 Each run was trained for 30 million timesteps using PPO and variations of the hyperparameters presented in \ref{appendix:ppo-trainer}. The training environment provided the agent 6 goals per episode situated at a distance of 5-50 meters away from the origin. In contrast, the testing environment contained a single goal located between 30 to 50 meters away from the origin. This sparse-reward testing environment evaluates the actual explorative capabilities of an agent.
-
-A brief overview of the aggregated results is shown below in Table \ref{tab:RQ1-results}, which also shows the general performance of the algorithms for the voxel scanning task. A deeper dive into this behavior is taken in the following tables.
-
-The run names that have a number such as \textit{run63++025} indicate that the voxel reward has a weight factor of 25\%, whereas \textit{run63++100} provides the agent a 100\% of the voxel reward. This allowed the analysis of different influences of voxel reward values and their impact on the agent's behavior. Furthermore, \textit{-constrained} indicates that the training environment manager will not reset the episode if the agent hits a boundary wall. For further information on the run names, please refer to Table \ref{appendix:baselines_rewards}.
+Furthermore, the run names that have a number such as \textit{run63++025} indicate that the voxel reward has a weight factor of 25\%, whereas \textit{run63++100} provides the agent a 100\% of the voxel reward. This allowed the analysis of different influences of voxel reward values and their impact on the agent's behavior. Furthermore, \textit{-constrained} indicates that the training environment manager will not reset the episode if the agent hits a boundary wall. For further information on the run names, please refer to Table \ref{appendix:baselines_rewards}.
 
 \newpage
 
-\begin{longtable}{|l|c|c|c|}                            \hline
-% \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
-\thead{Method}            
-& \thead{Episode Length}                
-& \thead{Average Total Objects Scanned}  
-& \thead{Standard Deviation}            \\ \hline
-run61-voxel	&	100	\%	&	0.34	&	0.10	\\ \hline
-run61-voxel-constrained	&	100	\%	&	0.33	&	0.11	\\ \hline
-run63++025	&	89	\%	&	1.56	&	0.24	\\ \hline
-run63++050	&	94	\%	&	1.05	&	0.20	\\ \hline
-run63++075	&	71	\%	&	0.96	&	0.17	\\ \hline
-run63++100	&	99	\%	&	0.77	&	0.17	\\ \hline
-run63++100-nospeed	&	97	\%	&	1.52	&	0.20	\\ \hline
-run63++100-nospeed-nolinger	&	98	\%	&	1.73	&	0.21	\\ \hline
-run63-normalized	&	97	\%	&	0.40	&	0.22	\\ \hline
+\subsubsection{Agents with Knowledge of Voxels}
+A brief overview of the aggregated results is shown below in Table \ref{tab:RQ1-results}, which also shows the general performance of the algorithms for the voxel scanning task. Other in-depth metrics are presented in the tables afterwards.
+\begin{longtable}{|l|c|c|}                            \hline %c|
+    % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
+    \thead{Method}            
+    & \thead{Episode Length}                
+    & \thead{Average Total Objects Scanned}  \\ \hline
+    % & \thead{Standard Deviation}            \\ \hline
+    % run61-voxel	&	100	\%	&	0.34	&	0.10	\\ \hline
+    % run61-voxel-constrained	&	100	\%	&	0.33	&	0.11	\\ \hline
+    % run63++025	&	89	\%	&	1.56	&	0.24	\\ \hline
+    % run63++050	&	94	\%	&	1.05	&	0.20	\\ \hline
+    % run63++075	&	71	\%	&	0.96	&	0.17	\\ \hline
+    % run63++100	&	99	\%	&	0.77	&	0.17	\\ \hline
+    % run63++100-nospeed	&	97	\%	&	1.52	&	0.20	\\ \hline
+    % run63++100-nospeed-nolinger	&	98	\%	&	1.73	&	0.21	\\ \hline
+    % run63-normalized	&	97	\%	&	0.40	&	0.22	\\ \hline
+run63++025 & 94 & {\cellcolor[HTML]{B6D8D1}} \color[HTML]{000000} 1.56 \\ \hline
+run63++100-nospeed & 98 & {\cellcolor[HTML]{BEDCD6}} \color[HTML]{000000} 1.52 \\ \hline
+run63++100-nospeed-nolinger & 97 & {\cellcolor[HTML]{98CAC0}} \color[HTML]{000000} 1.73 \\ \hline
+run63++100-nospeed-nolinger-oracle & 96 & {\cellcolor[HTML]{E0EDEA}} \color[HTML]{000000} 1.33 \\ \hline
+run63++100-nospeed-nolinger-oracle-8 & 99 & {\cellcolor[HTML]{90C6BB}} \color[HTML]{000000} 1.77 \\ \hline
+run63++100-nospeed-nolinger-pigeon-oracle-8 & 97 & {\cellcolor[HTML]{E6F0EE}} \color[HTML]{000000} 1.30 \\ \hline
+run63++100-nospeed-oracle-4 & 100 & {\cellcolor[HTML]{A9D2CA}} \color[HTML]{000000} 1.64 \\ \hline
+run63++100-nospeed-oracle-8-pigeon & 93 & {\cellcolor[HTML]{A1CFC5}} \color[HTML]{000000} 1.68 \\ \hline
+run65-pure-vision & 99 & {\cellcolor[HTML]{BADBD4}} \color[HTML]{000000} 1.54 \\ \hline
+run68++100-nospeed & 97 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 2.10 \\ \hline
+run68++100-oracle & 96 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 1.27 \\ \hline
+run68++100-oracle-nospeed & 98 & {\cellcolor[HTML]{B1D6CE}} \color[HTML]{000000} 1.59 \\ \hline
 
 
-\caption{Overview of the best object-focused runs with respect to the \textit{Total Objects Scanned} metric}. \label{tab:RQ1-results}
+    \caption{Overview of the best object-focused runs with knowledge of voxels respect to the \textit{Episode Length} and the \textit{Total Objects Scanned} metrics}. \label{tab:RQ1-results}
 \end{longtable}
 
 Table \ref{tab:results-RQ1-walkLook} shows the results for the total of voxels scanned and also their performance measured by the amount of \textit{total detections}, the \textit{walk error} and the \textit{look error}. These two errors represent the directional error to the nearest target for the agent. 
 
 \begin{longtable}{|l|c|c|c|}                            \hline
-% \multicolumn{3}{|l|}{\textbf{Walk Error}}              \\\hline
-\thead{Method}            
-& \thead{Total Detections Count} 
-& \thead{Walk Error} 
-& \thead{Look Error}   \\ \hline
-run61-voxel	&	452437.65	&	0.46	&	0.45	\\ \hline
-run61-voxel-constrained	&	350545.99	&	0.47	&	0.47	\\ \hline
-run63++025	&	426601.17	&	0.46	&	0.37	\\ \hline
-run63++050	&	426814.30	&	0.48	&	0.47	\\ \hline
-run63++075	&	377998.19	&	0.47	&	0.46	\\ \hline
-run63++100	&	360373.23	&	0.47	&	0.44	\\ \hline
-run63++100-nospeed	&	315159.74	&	0.46	&	0.41	\\ \hline
-run63++100-nospeed-nolinger	&	425433.05	&	0.47	&	0.41	\\ \hline
-run63-normalized	&	\textbf{610597.65}	&	0.48	&	0.42	\\ \hline
-\caption{Overview of the best runs for the object exploration task, with respect to the \textit{Walk Error} and \textit{Look Error} metrics}.
-\label{tab:results-RQ1-walkLook}
+    % \multicolumn{3}{|l|}{\textbf{Walk Error}}              \\\hline
+    \thead{Method}            
+    & \thead{Total Detections Count} 
+    & \thead{Walk Error} 
+    & \thead{Look Error}   \\ \hline
+run63 & 0.04 & 0.48 & 0.42 \\ \hline
+run63++025 & 0.03 & 0.46 & 0.37 \\ \hline
+run63++050 & 0.03 & 0.48 & 0.47 \\ \hline
+run63++075 & 0.03 & 0.47 & 0.46 \\ \hline
+run63++100 & 0.03 & 0.47 & 0.44 \\ \hline
+run63++100-nospeed & 0.02 & 0.46 & 0.41 \\ \hline
+run63++100-nospeed-nolinger & 0.03 & 0.47 & 0.41 \\ \hline
+run63++100-nospeed-nolinger-oracle & 0.03 & 0.43 & 0.41 \\ \hline
+run63++100-nospeed-nolinger-oracle-8 & 0.03 & 0.41 & 0.42 \\ \hline
+run63++100-nospeed-nolinger-pigeon-oracle-8 & 0.03 & 0.43 & 0.43 \\ \hline0
+run63++100-nospeed-oracle-4 & 0.03 & 0.39 & 0.38 \\ \hline
+run63++100-nospeed-oracle-8 & 0.03 & 0.47 & 0.44 \\ \hline
+run63++100-nospeed-oracle-8-pigeon & 0.03 & 0.47 & 0.39 \\ \hline
+run64+vision & 0.03 & 0.42 & 0.43 \\ \hline
+run64+vision-nospeed & 0.05 & 0.20 & 0.22 \\ \hline
+run65-pure-vision & 0.04 & 0.46 & 0.42 \\ \hline
+run68++050 & 0.04 & 0.47 & 0.47 \\ \hline
+run68++100 & 0.03 & 0.48 & 0.43 \\ \hline
+run68++100-nospeed & 0.05 & 0.47 & 0.40 \\ \hline
+run68++100-oracle & 0.03 & 0.47 & 0.43 \\ \hline
+run68++100-oracle-nospeed & 0.03 & 0.44 & 0.38 \\ \hline
+
+    \caption{Overview of the best runs with knowledge of voxels for the object exploration task, with respect to the \textit{Walk Error} and \textit{Look Error} metrics}.
+    \label{tab:results-RQ1-walkLook}
 \end{longtable}
 
 The explorative performance of the best voxel-curious methods are presented in Table \ref{tab:results-RQ1-explorative-performance}, which is given by metrics such as the amount of octree scan points, the leaf nodes visited and the lingering behavior.
 
 \begin{longtable}{|l|c|c|c|c|}                            \hline
-% \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
-\thead{Method}            
-& \thead{Octree \\ Scan Points} 
-& \thead{Octree \\ Leaf Nodes Visited} 
-& \thead{Lingering \\ Penalty Count}  
-& \thead{Lingering \\ Penalty Strength} 
-\\ \hline
-% run61-voxel	&	36.15	&	10.07	&	24.67	&	0.95	\\ \hline
-% run61-voxel-constrained	&	42.58	&	14.06	&	19.20	&	0.96	\\ \hline
-% run63++025	&	\textbf{131.40}	&	\textbf{40.18}	&	\textbf{31.10}	&	0.95	        \\ \hline
-% run63++050	&	83.43	&	28.41	                &	24.20	&   0.95	        \\ \hline
-% run63++075	&	90.33	&	29.63	                &	11.27	&   0.96	        \\ \hline
-% run63++100-nospeed-nolinger	&	119.59	&	36.28	&	\textbf{30.26}	&	0.95	        \\ \hline
-% run63++100-nospeed	&	\textbf{126.73}	&	36.67	&	16.15	&	0.96	        \\ \hline
-% run63++100	&	87.74	&	29.11	                &	\textbf{25.61}   &   0.96	        \\ \hline
-% run63-normalized	&	97.68	&	31.45	        &	9.92    &   0.93	        \\ \hline
-run61-voxel	&	36.15		&	0.3	\%	&	24.67	&	0.95	\\ \hline
-run61-voxel-constrained	&	0.00		&	0.4	\%	&	19.20	&	0.96	\\ \hline
-run63++025	&	131.40		&	1.0	\%	&	31.10	&	0.95	\\ \hline
-run63++050	&	83.43		&	0.7	\%	&	24.20	&	0.95	\\ \hline
-run63++075	&	90.33		&	0.7	\%	&	11.27	&	0.96	\\ \hline
-run63++100	&	87.74		&	0.7	\%	&	25.61	&	0.96	\\ \hline
-run63++100-nospeed	&	126.73		&	0.9	\%	&	16.15	&	0.96	\\ \hline
-run63++100-nospeed-nolinger	&	119.59		&	0.9	\%	&	30.26	&	0.95	\\ \hline
-run63-normalized	&	97.68		&	0.8	\%	&	9.92	&	0.93	\\ \hline
+    % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
+    \thead{Method}            
+    & \thead{Octree \\ Scan Points} 
+    & \thead{Octree \\ Leaf Nodes Visited} 
+    & \thead{Lingering \\ Penalty Count}  
+    & \thead{Lingering \\ Penalty Strength} 
+    \\ \hline
+    % run61-voxel	&	36.15	&	10.07	&	24.67	&	0.95	\\ \hline
+    % run61-voxel-constrained	&	42.58	&	14.06	&	19.20	&	0.96	\\ \hline
+    % run63++025	&	\textbf{131.40}	&	\textbf{40.18}	&	\textbf{31.10}	&	0.95	        \\ \hline
+    % run63++050	&	83.43	&	28.41	                &	24.20	&   0.95	        \\ \hline
+    % run63++075	&	90.33	&	29.63	                &	11.27	&   0.96	        \\ \hline
+    % run63++100-nospeed-nolinger	&	119.59	&	36.28	&	\textbf{30.26}	&	0.95	        \\ \hline
+    % run63++100-nospeed	&	\textbf{126.73}	&	36.67	&	16.15	&	0.96	        \\ \hline
+    % run63++100	&	87.74	&	29.11	                &	\textbf{25.61}   &   0.96	        \\ \hline
+    % run63-normalized	&	97.68	&	31.45	        &	9.92    &   0.93	        \\ \hline
+run63 & {\cellcolor[HTML]{D6E8E4}} \color[HTML]{000000} 2.44 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.79 & 9.92 & 0.93 \\ \hline
+run63++025 & {\cellcolor[HTML]{CAE2DD}} \color[HTML]{000000} 3.28 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 1.00 & 31.10 & 0.95 \\ \hline
+run63++050 & {\cellcolor[HTML]{DCEBE7}} \color[HTML]{000000} 2.09 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.71 & 24.20 & 0.95 \\ \hline
+run63++075 & {\cellcolor[HTML]{D9EAE6}} \color[HTML]{000000} 2.26 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.74 & 11.27 & 0.96 \\ \hline
+run63++100 & {\cellcolor[HTML]{DAEAE6}} \color[HTML]{000000} 2.19 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.73 & 25.61 & 0.96 \\ \hline
+run63++100-nospeed & {\cellcolor[HTML]{CBE3DE}} \color[HTML]{000000} 3.17 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.92 & 16.15 & 0.96 \\ \hline
+run63++100-nospeed-nolinger & {\cellcolor[HTML]{CEE4E0}} \color[HTML]{000000} 2.99 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.91 & 30.26 & 0.95 \\ \hline
+run63++100-nospeed-nolinger-oracle & {\cellcolor[HTML]{D8E9E5}} \color[HTML]{000000} 2.34 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.64 & 42.49 & 0.94 \\ \hline
+run63++100-nospeed-nolinger-oracle-8 & {\cellcolor[HTML]{DBEBE7}} \color[HTML]{000000} 2.13 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.55 & 17.83 & 0.96 \\ \hline
+run63++100-nospeed-nolinger-pigeon-oracle-8 & {\cellcolor[HTML]{D9EAE6}} \color[HTML]{000000} 2.26 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.65 & 40.68 & 0.94 \\ \hline
+run63++100-nospeed-oracle-4 & {\cellcolor[HTML]{DCEBE8}} \color[HTML]{000000} 2.03 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.54 & 9.49 & 0.95 \\ \hline
+run63++100-nospeed-oracle-8 & {\cellcolor[HTML]{7FBEB1}} \color[HTML]{000000} 8.29 & {\cellcolor[HTML]{9ACBC1}} \color[HTML]{000000} 2.40 & 35.62 & 0.95 \\ \hline
+run63++100-nospeed-oracle-8-pigeon & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 11.12 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 3.58 & 35.48 & 0.94 \\ \hline
+run64+vision & {\cellcolor[HTML]{DCEBE8}} \color[HTML]{000000} 2.04 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.52 & 10.79 & 0.95 \\ \hline
+run64+vision-nospeed & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.96 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.21 & 98.00 & 0.91 \\ \hline
+run65-pure-vision & {\cellcolor[HTML]{DAEAE6}} \color[HTML]{000000} 2.19 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.66 & 15.57 & 0.93 \\ \hline
+run68++050 & {\cellcolor[HTML]{D4E7E3}} \color[HTML]{000000} 2.65 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.95 & 21.44 & 0.94 \\ \hline
+run68++100 & {\cellcolor[HTML]{D7E9E5}} \color[HTML]{000000} 2.39 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.86 & 24.58 & 0.95 \\ \hline
+run68++100-nospeed & {\cellcolor[HTML]{CEE4E0}} \color[HTML]{000000} 3.00 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.92 & 25.97 & 0.91 \\ \hline
+run68++100-oracle & {\cellcolor[HTML]{D5E8E4}} \color[HTML]{000000} 2.53 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.78 & 19.30 & 0.95 \\ \hline
+run68++100-oracle-nospeed & {\cellcolor[HTML]{D4E7E3}} \color[HTML]{000000} 2.65 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.79 & 24.72 & 0.95 \\ \hline
 
-
-\caption{Overview of the best runs for the object exploration task, with respect to the \textit{Octree Scan Points}, \textit{Octree Leaf Nodes Visited}, \textit{Lingering Penalty Strength} and \textit{Lingering Penalty Count} metrics}. \label{tab:results-RQ1-explorative-performance}
+    \caption{Overview of the best runs with knowledge of voxels for the object exploration task, with respect to the \textit{Octree Scan Points}, \textit{Octree Leaf Nodes Visited}, \textit{Lingering Penalty Strength} and \textit{Lingering Penalty Count} metrics}. \label{tab:results-RQ1-explorative-performance}
 \end{longtable}
-
 
 % \begin{longtable}{|l|c|c|c|c|}                            \hline
 % % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
@@ -188,155 +222,256 @@ run63-normalized	&	97.68		&	0.8	\%	&	9.92	&	0.93	\\ \hline
 % \caption{Overview of the best runs for the object exploration task, with respect to the \textit{Octree Discovery Reward} metric}. \label{tab:RQ1-results}
 % \end{longtable}
 
+\newpage
+\subsubsection{Agents without Knowledge of Voxels}
+The following Table \ref{tab:RQ1-results-noknowledgeofvoxels} presents the aggregated results for the agents that get rewarded for finding voxels but are not able to see them in the grid sensor view.
+% is shown below in Table , which also shows the general performance of the algorithms for the voxel scanning task.
+
+\begin{longtable}{|l|c|c|c|}                            \hline
+    % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
+    \thead{Method}            
+    & \thead{Episode Length}                
+    & \thead{Average Total Objects Scanned}  
+    & \thead{Standard Deviation}            \\ \hline
+    random-agent	&	89	\%	&	1.56	&	0.24	\\ \hline
+    run61-voxel	&	100	\%	&	0.34	&	0.10	\\ \hline
+    run61-voxel-constrained	&	100	\%	&	0.33	&	0.11	\\ \hline
+    run64	&	100	\%	&	0.33	&	0.11	\\ \hline
+    run64	&	100	\%	&	0.33	&	0.11	\\ \hline
+    run64	&	100	\%	&	0.33	&	0.11	\\ \hline
+    run65	&	100	\%	&	0.33	&	0.11	\\ \hline
+    run65	&	100	\%	&	0.33	&	0.11	\\ \hline
+    run66	&	100	\%	&	0.33	&	0.11	\\ \hline
+    run67	&	100	\%	&	0.33	&	0.11	\\ \hline
+    \caption{Overview of the best object-focused runs without knowledge of voxels with respect to the \textit{Episode Length} and the \textit{Total Objects Scanned} metrics}. \label{tab:RQ1-results-noknowledgeofvoxels}
+\end{longtable}
+
+Further Tables related to these agents can be found in Appendix \ref{appendix:RQ1-results-noknowledgeofvoxels}.
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Research Question 2}\label{chap:4:results-RQ2}
 
-This section deals with the results related to question 2, which focuses on the exploration of the 3D space in a given environment using octrees. The 160$m^2$ environment consists of around 8000, 800 and 200 nodes when segmented in octants of 4$m^3$, 8$m^3$ and 16$m^3$, respectively. The following Table \ref{tab:RQ2-results} summarizes the best models for the explorative task using the octree discovery reward.
+This section deals with the results related to question 2, which focuses on the exploration of the 3D space in a given environment using octrees. The 160$m^2$ environment consists of around 8000, 800 and 200 nodes when segmented in octants of 4$m^3$, 8$m^3$ and 16$m^3$, respectively. 
+The following Table \ref{tab:RQ2-results} summarizes the best models with knowledge of octrees for the given task. %  using the octree discovery reward
 
 % The presented numbers are the result of 500000 optimizations 
 \begin{longtable}{|l|c|c|c|}                            \hline
-% \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
-\textbf{Method}            
-& \thead{Episode Length}                
-& \thead{Octree Discovery Reward}                
-& \thead{Standard Deviation}            \\ \hline
-% run61-explore	&	95	\%	&	0.89	&	0.07	\\ \hline
-run61-explore-constrained	&	100	\%	&	0.93	&	0.03	\\ \hline
-run62-4	&	97	\%	&	0.83	&	0.03	\\ \hline
-run62-4-pigeon	&	19	\%	&	0.22	&	0.05	\\ \hline
-run62-4-pigeon-pathak	&	25	\%	&	0.21	&	0.06	\\ \hline
-run62-8	&	49	\%	&	0.18	&	0.05	\\ \hline
-run62-8-pathak	&	63	\%	&	0.15	&	0.02	\\ \hline
-run62-16	&	4	\%	&	0.07	&	0.00	\\ \hline
-run62-16-constrained	&	100	\%	&	0.01	&	0.00	\\ \hline
-run62-16-constrained-pigeon	&	100	\%	&	0.03	&	0.01	\\ \hline
-run62-16-constrained-pigeon-pathak	&	100	\%	&	0.01	&	0.00	\\ \hline
-run62-16-pathak	&	4	\%	&	0.07	&	0.00	\\ \hline
-
-\caption{Overview of the best environment-exploration focused runs with respect to the \textit{Octree Discovery Reward} metric}. \label{tab:RQ2-results}
+    % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
+    \textbf{Method}            
+    & \thead{Episode Length}                
+    & \thead{Octree Discovery Reward}                
+    & \thead{Standard Deviation}            \\ \hline
+    % run61-explore	&	95	\%	&	0.89	&	0.07	\\ \hline
+    % run61-explore-constrained	&	100	\%	&	0.93	&	0.03	\\ \hline
+    run62-4	&	97	\%	&	0.83	&	0.03	\\ \hline
+    run62-4-pigeon	&	19	\%	&	0.22	&	0.05	\\ \hline
+    run62-4-pigeon-pathak	&	25	\%	&	0.21	&	0.06	\\ \hline
+    run62-8	&	49	\%	&	0.18	&	0.05	\\ \hline
+    run62-8-pathak	&	63	\%	&	0.15	&	0.02	\\ \hline
+    run62-16	&	4	\%	&	0.07	&	0.00	\\ \hline
+    run62-16-constrained	&	100	\%	&	0.01	&	0.00	\\ \hline
+    run62-16-constrained-pigeon	&	100	\%	&	0.03	&	0.01	\\ \hline
+    run62-16-constr-pigeon-pathak	&	100	\%	&	0.01	&	0.00	\\ \hline
+    run62-16-pathak	&	4	\%	&	0.07	&	0.00	\\ \hline
+    \caption{Overview of the best environment-exploration focused runs with respect to the \textit{Episode Length} and the \textit{Octree Discovery Reward} metrics}. \label{tab:RQ2-results}
 \end{longtable}
 
-The contrast in explorative performance for the best octree exploration methods and the best voxel-curious methods is presented below in Table \ref{tab:RQ2-results-comparative-voxeloctree}. This contrast is based on the number of scan points, the number of leaf nodes and the lingering behavior. 
+The results for the environment-focused methods that have no knowledge of octrees are presented below in Table \ref{tab:RQ2-results-noknowledgeofOctrees}.
+\begin{longtable}{|l|c|c|c|}                            \hline
+    % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
+    \textbf{Method}            
+    & \thead{Episode Length}                
+    & \thead{Octree Discovery Reward}                
+    & \thead{Standard Deviation}            \\ \hline
+    % run61-explore	&	95	\%	&	0.89	&	0.07	\\ \hline
+    random-agent	&	100	\%	&	0.93	&	0.03	\\ \hline
+    run61-explore-constrained	&	100	\%	&	0.93	&	0.03	\\ \hline
+    run61-explore-constrained-pathak	&	100	\%	&	0.93	&	0.03	\\ \hline
+    \caption{Overview of the best environment-exploration focused that have no knowledge of octrees to the \textit{Episode Length} and the \textit{Octree Discovery Reward} metrics}. \label{tab:RQ2-results-noknowledgeofOctrees}
+\end{longtable}
+
+\newpage
+
+% The contrast in explorative performance for the best octree exploration methods and the best voxel-curious methods is presented below in
+Relevant depth-metrics for the explorative task are presented below in Table \ref{tab:RQ2-results-comparative-voxeloctree}. This contrast is based on the number of scan points, the number of leaf nodes and the lingering behavior. 
+
 
 \begin{longtable}{|l|c|c|c|}                            \hline
-% \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
-\thead{Method}            
-& \thead{Octree Scan \\ Points Found}
-& \thead{Octree \\ Lingering Count}
-& \thead{Octree Leaf  \\ Nodes Visited}   \\ \hline
-% run61-explore	        &	1\%	&	3.14	&	1\%	\\ \hline
-% run61-explore-constrained	        &	2\%	&	3.11	&	1\%	\\ \hline
-% run62-4     	&	1\%	&	3.11	&	1\%	\\ \hline
-% run62-4-pigeon	        &	0\%	&	6.94	&	0\%	\\ \hline
-% run62-4-pigeon-pathak	&	1\%	&	8.39	&	0\%	\\ \hline
-% run62-8     	&	5\%	&	7.05	&	3\%	\\ \hline
-% run62-8-pathak      	&	5\%	&	7.20	&	3\%	\\ \hline
-% run62-16	        &	6\%	&	10.07	&	1\%	\\ \hline
-% run62-16-constrained	        &	\textbf{24\%}	&	4.99	&	\textbf{11\%}	\\ \hline
-% run62-16-constrained-pigeon	        &	\textbf{21\%}	&	3.68	&	\textbf{17\%}	\\ \hline
-% run62-16-constrained-pigeon-pathak	&	15\%	&	5.66	&	5\%	\\ \hline
-% run62-16-pathak	        &	6\%	&	9.91	&	1\%	\\ \hline
-% run61-explore	&	3.0	\%	&	3.14	&	2.3	\%	\\ \hline
-run61-explore-constrained	&	3.5	\%	&	3.11	&	2.4	\%	\\ \hline
-run62-4	&	2.3	\%	&	3.11	&	2.3	\%	\\ \hline
-run62-4-pigeon	&	0.7	\%	&	6.94	&	0.3	\%	\\ \hline
-run62-4-pigeon-pathak	&	1.0	\%	&	8.39	&	0.3	\%	\\ \hline
-run62-8	&	12.2	\%	&	7.05	&	6.5	\%	\\ \hline
-run62-8-pathak	&	11.9	\%	&	7.20	&	7.3	\%	\\ \hline
-run62-16	&	7.5	\%	&	10.07	&	1.7	\%	\\ \hline
-run62-16-constrained	&	30.2	\%	&	4.99	&	13.5	\%	\\ \hline
-run62-16-constrained-pigeon	&	26.4	\%	&	3.68	&	21.5	\%	\\ \hline
-run62-16-constrained-pigeon-pathak	&	19.0	\%	&	5.66	&	5.9	\%	\\ \hline
-run62-16-pathak	&	8.0	\%	&	9.91	&	1.7	\%	\\ \hline
-\caption{Overview of the best runs for the object exploration task, with respect to the \textit{Octree Scan Points Found}, \textit{Octree Lingering Count} and \textit{Octree Leaf Nodes Visited} metrics}. \label{tab:RQ2-results-comparative-voxeloctree}
+    % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
+    \thead{Method}            
+    & \thead{Octree Scan \\ Points Found}
+    & \thead{Octree \\ Lingering Count}
+    & \thead{Octree Leaf  \\ Nodes Visited}   \\ \hline
+    % run61-explore	        &	1\%	&	3.14	&	1\%	\\ \hline
+    % run61-explore-constrained	        &	2\%	&	3.11	&	1\%	\\ \hline
+    % run62-4     	&	1\%	&	3.11	&	1\%	\\ \hline
+    % run62-4-pigeon	        &	0\%	&	6.94	&	0\%	\\ \hline
+    % run62-4-pigeon-pathak	&	1\%	&	8.39	&	0\%	\\ \hline
+    % run62-8     	&	5\%	&	7.05	&	3\%	\\ \hline
+    % run62-8-pathak      	&	5\%	&	7.20	&	3\%	\\ \hline
+    % run62-16	        &	6\%	&	10.07	&	1\%	\\ \hline
+    % run62-16-constrained	        &	\textbf{24\%}	&	4.99	&	\textbf{11\%}	\\ \hline
+    % run62-16-constrained-pigeon	        &	\textbf{21\%}	&	3.68	&	\textbf{17\%}	\\ \hline
+    % run62-16-constrained-pigeon-pathak	&	15\%	&	5.66	&	5\%	\\ \hline
+    % run62-16-pathak	        &	6\%	&	9.91	&	1\%	\\ \hline
+    % run61-explore	&	3.0	\%	&	3.14	&	2.3	\%	\\ \hline
+    random-agent	&	100	\%	&	0.93	&	0.03	\\ \hline
+    run61-explore-constrained	&	100	\%	&	0.93	&	0.03	\\ \hline
+    run61-explore-constrained-pathak	&	100	\%	&	0.93	&	0.03	\\ \hline
+    run62-4	&	2.3	\%	&	3.11	&	2.3	\%	\\ \hline
+    run62-4-pigeon	&	0.7	\%	&	6.94	&	0.3	\%	\\ \hline
+    run62-4-pigeon-pathak	&	1.0	\%	&	8.39	&	0.3	\%	\\ \hline
+    run62-8	&	12.2	\%	&	7.05	&	6.5	\%	\\ \hline
+    run62-8-pathak	&	11.9	\%	&	7.20	&	7.3	\%	\\ \hline
+    run62-16	&	7.5	\%	&	10.07	&	1.7	\%	\\ \hline
+    run62-16-constrained	&	30.2	\%	&	4.99	&	13.5	\%	\\ \hline
+    run62-16-constrained-pigeon	&	26.4	\%	&	3.68	&	21.5	\%	\\ \hline
+    run62-16-constrained-pigeon-pathak	&	19.0	\%	&	5.66	&	5.9	\%	\\ \hline
+    run62-16-pathak	&	8.0	\%	&	9.91	&	1.7	\%	\\ \hline
+    \caption{Overview of the best runs for the object exploration task, with respect to the \textit{Octree Scan Points Found}, \textit{Octree Lingering Count} and \textit{Octree Leaf Nodes Visited} metrics}. \label{tab:RQ2-results-comparative-voxeloctree}
 \end{longtable}
 
 
 \subsection{Mixed-Focus Agents}
-This sections presents the variant of agents that have both knowledge of the environment and voxels. Information about the environment can be present in the form of octree nodes, lingering feedback and \textit{pigeon observations}. Table \ref{tab:results-mixed-agents} displays the results for this run.
+This sections presents the variant of agents that have both knowledge of the environment and voxels. Information about the environment can be present in the form of octree nodes, lingering feedback and \textit{pigeon observations}. Table \ref{tab:results-mixed-agents} displays the results for these methods.
 
 \begin{longtable}{|l|c|c|c|c|c|c|c|}                            \hline
-% \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
-\thead{Method}            
-& \thead{Total Objects \\ Scanned} 
-& \thead{Look \\ Direction}
-& \thead{Octree \\Reward}
-& \thead{Octree Leaf \\ Nodes Visited}
-& \thead{Detections \\Total Count}
-& \thead{Semantic \\ Curiosity}
-& \thead{Shannon \\ Entropy}             \\ \hline
-run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-\caption{Overview of the best runs for the object exploration task, with respect to the \textit{Total Objects Scanned}, \textit{Look Direction}, \textit{Octree Reward}, \textbf{Octree Leaf Nodes Visited}, \textit{Detections Total Count}, \textbf{Semantic Curiosity} and \textbf{Shannon Entropy} metrics}. \label{tab:results-mixed-agents}
+    % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
+    \thead{Method}            
+    & \thead{Total Objects \\ Scanned} 
+    & \thead{Look \\ Direction}
+    & \thead{Octree \\Reward}
+    & \thead{Octree Leaf \\ Nodes Visited}
+    & \thead{Detections \\Total Count}
+    & \thead{Semantic \\ Curiosity}
+    & \thead{Shannon \\ Entropy}             
+    \\ \hline
+    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
+    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
+    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
+    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
+    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
+    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
+    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
+    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
+    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
+    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
+    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
+    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
+    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
+    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
+    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
+    \caption{Overview of the best runs for the object exploration task, with respect to the \textit{Total Objects Scanned}, \textit{Look Direction}, \textit{Octree Reward}, \textbf{Octree Leaf Nodes Visited}, \textit{Detections Total Count}, \textbf{Semantic Curiosity} and \textbf{Shannon Entropy} metrics}. \label{tab:results-mixed-agents}
 \end{longtable}
 
 
+
+
+\newpage
 \subsection{Evaluation Framework}
-This section presents the performance of the methods that serve as baselines to compare the performance of our proposed method. These baselines were also trained under different parameter configurations to reach the best performant one, as displayed in Table \ref{tab:results-evaluation-framework} with the metrics collected and the baselines used to evaluate our method 
-The baselines were setup using
+This section presents the performance of the best performing methods that reached the \textit{DARPA} evaluation challenge presented in Section \ref{chap:3:further-use:evaluation-framework}. Table \ref{tab:results-evaluation-framework} displays the results for the voxel-goal task.
 
-\begin{longtable}{|l|c|c|c|c|c|c|c|}                            \hline
-% \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
-\thead{Method}            
-& \thead{Total Objects \\ Scanned} 
-& \thead{Look \\ Direction}
-& \thead{Octree \\Reward}
-& \thead{Octree Leaf \\ Nodes Visited}
-& \thead{Detections \\Total Count}
-& \thead{Semantic \\ Curiosity}
-& \thead{Shannon \\ Entropy}             \\ \hline
-run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-\caption{Overview of the best runs for the object exploration task, with respect to the \textit{Total Objects Scanned}, \textit{Look Direction}, \textit{Octree Reward}, \textbf{Octree Leaf Nodes Visited}, \textit{Detections Total Count}, \textbf{Semantic Curiosity} and \textbf{Shannon Entropy} metrics}. \label{tab:results-evaluation-framework}
+% that serve as baselines to compare the performance of our proposed method. These baselines were also trained under different parameter configurations to reach the best performant one, as displayed in Table with the metrics collected and the baselines used to evaluate our method 
+% The baselines were setup using
+
+\begin{longtable}{|l|c|c|c|c|}                            \hline
+    % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
+    \thead{Method}            
+    & \thead{Time to \\ First Goal} 
+    & \thead{Average Time \\ to Goal}
+    & \thead{Average s/m  \\ between goals}
+    & \thead{Accumulated s/m  \\ to goal} 
+    \\ \hline
+    run64       & 260k      & No       & a &   b               \\ \hline
+    run64       & 260k      & No       & a &   b               \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    run64       & 260k      & No       & a &    b              \\ \hline
+    \caption{Overview of the best runs for the object exploration task, with respect to the \textit{Total Objects Scanned}, \textit{Look Direction}, \textit{Octree Reward}, \textbf{Octree Leaf Nodes Visited}, \textit{Detections Total Count}, \textbf{Semantic Curiosity} and \textbf{Shannon Entropy} metrics}. \label{tab:results-evaluation-framework}
+\end{longtable}
+
+Table \ref{tab:results-evaluation-framework} shows the Time to Coverage (TTC) results for the best methods tested in the \textit{DARPA} environment in the octree-goal task.
+
+\begin{longtable}{|l|c|c|c|c|c|c|}                            \hline
+    % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
+    \thead{Method}            
+    & \thead{TTC 10\%} 
+    & \thead{TTC 30\%} 
+    & \thead{TTC 50\%} 
+    & \thead{TTC 70\%} 
+    & \thead{TTC 80\%} 
+    & \thead{TTC 90\%} 
+    \\ \hline
+    run64       & 260k      & No       & a & b &  a  & b            \\ \hline
+    run64       & 260k      & No       & a & b &  a  & b            \\ \hline
+    run64       & 260k      & No       & a & b &  a  & b            \\ \hline
+    run64       & 260k      & No       & a & b &  a  & b            \\ \hline
+    run64       & 260k      & No       & a & b &  a  & b            \\ \hline
+    run64       & 260k      & No       & a & b &  a  & b            \\ \hline
+    run64       & 260k      & No       & a & b &  a  & b            \\ \hline
+    run64       & 260k      & No       & a & b &  a  & b            \\ \hline
+    run64       & 260k      & No       & a & b &  a  & b            \\ \hline
+    run64       & 260k      & No       & a & b &  a  & b            \\ \hline
+    run64       & 260k      & No       & a & b &  a  & b            \\ \hline
+    run64       & 260k      & No       & a & b &  a  & b            \\ \hline
+    run64       & 260k      & No       & a & b &  a  & b            \\ \hline
+    \caption{Overview of the best runs for the object exploration task, with respect to the \textit{Total Objects Scanned}, \textit{Look Direction}, \textit{Octree Reward}, \textbf{Octree Leaf Nodes Visited}, \textit{Detections Total Count}, \textbf{Semantic Curiosity} and \textbf{Shannon Entropy} metrics}. \label{tab:results-evaluation-framework}
 \end{longtable}
 
 
+\newpage
 \subsection{Small Environment Results}\label{chap-4:small-env-results}
 This section presents the best performances for the voxel exploration task and the octree exploration task. The corresponding results for the big environment were presented in Sections \ref{chap:4:results-RQ1} and \ref{chap:4:results-RQ2} respectively. As mentioned before, the small environment has an area of 16 $m^2$ and the big environment has an area of 80 $m^2$. 
-The only difference is that the agent's grid sensor for the small environment has a smaller range with a radius of 8 meters.
-
-Table \ref{tab:results-small-env-voxel} displays the best runs for the voxel-curious behaviors in the small environment.
+In the small environment, the agent's grid sensor has a smaller radius of 8 meters.
+The following Table \ref{tab:results-small-env-voxel} displays the best runs for the voxel-curious behaviors in the small environment.
 
 \begin{longtable}{|l|c|c|c|c|c|c|c|}                            \hline
-% \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
-\thead{Method}            
-& \thead{Average Total Objects Scanned}  
-& \thead{Standard Deviation}            \\ \hline
-
-run61	&	0.00	&	0.00	\\ \hline
-run62	&	0.00	&	0.00	\\ \hline
-run63	&	3.03	&	1.84	\\ \hline
-run63++025	&	4.76	&	\textbf{2.37}	\\ \hline
-run63++050	&	1.49	&	0.47	\\ \hline
-run63++075	&	2.62	&	0.88	\\ \hline
-run63++100	&	\textbf{9.42}	&	0.39	\\ \hline
-run64	&	0.00	&	0.00	\\ \hline
-run65	&	0.03	&	0.01	\\ \hline
-run65	&	0.01	&	0.03	\\ \hline
-run65-pure	&	\textbf{8.71}	&	0.56	\\ \hline
-run66	&	0.35	&	0.12	\\ \hline
-run66	&	0.16	&	0.08	\\ \hline
-run67	&	0.00	&	0.00	\\ \hline
-run68	&	0.00	&	0.00	\\ \hline
-run68++050	&	\textbf{9.19}	&	0.41	\\ \hline
-run68++100	&	\textbf{9.04}	&	0.66	\\ \hline
-
-\caption{Overview of the results for the runs in the small environment, with respect to the \textit{Total Objects Scanned} metric}.
-\label{tab:results-small-env-voxel}
+    % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
+    \thead{Method}            
+    & \thead{Average Total Objects Scanned}  
+    & \thead{Standard Deviation}            
+    \\ \hline
+    
+    run61	&	0.00	&	0.00	\\ \hline
+    run62	&	0.00	&	0.00	\\ \hline
+    run63	&	3.03	&	1.84	\\ \hline
+    run63++025	&	4.76	&	\textbf{2.37}	\\ \hline
+    run63++050	&	1.49	&	0.47	\\ \hline
+    run63++075	&	2.62	&	0.88	\\ \hline
+    run63++100	&	\textbf{9.42}	&	0.39	\\ \hline
+    run64	&	0.00	&	0.00	\\ \hline
+    run65	&	0.03	&	0.01	\\ \hline
+    run65	&	0.01	&	0.03	\\ \hline
+    run65-pure	&	\textbf{8.71}	&	0.56	\\ \hline
+    run66	&	0.35	&	0.12	\\ \hline
+    run66	&	0.16	&	0.08	\\ \hline
+    run67	&	0.00	&	0.00	\\ \hline
+    run68	&	0.00	&	0.00	\\ \hline
+    run68++050	&	\textbf{9.19}	&	0.41	\\ \hline
+    run68++100	&	\textbf{9.04}	&	0.66	\\ \hline
+    
+    \caption{Overview of the results for the runs in the small environment, with respect to the \textit{Total Objects Scanned} metric}.
+    \label{tab:results-small-env-voxel}
 \end{longtable}
 
 
@@ -344,53 +479,60 @@ run68++100	&	\textbf{9.04}	&	0.66	\\ \hline
 The following Table \ref{tab:results-small-env-octree} presents the runs with the best performance in the octree exploration task.
  
 \begin{longtable}{|l|c|c|}                            \hline
-% \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
-\textbf{Method}            
-& \thead{Octree Discovery Reward} 
-& \thead{Standard Deviation}            \\ \hline
-run61	&	0.04	&	0.00	\\ \hline
-run62	&	\textbf{0.09}	&	0.00	\\ \hline
-run63	&	0.04	&\textbf{	0.01}	\\ \hline
-run63++025	&	0.04	&	0.00	\\ \hline
-run63++050	&	0.03	&	0.00	\\ \hline
-run63++075	&	0.04	&	0.00	\\ \hline
-run63++100	&	0.03	&	0.00	\\ \hline
-run64	&	0.00	&	0.00	\\ \hline
-run65	&	0.02	&	0.00	\\ \hline
-run65-pure	&	0.03	&	0.00	\\ \hline
-run66	&	0.02	&	0.00	\\ \hline
-run67	&	0.00	&	0.00	\\ \hline
-run68	&	0.04	&	0.00	\\ \hline
-run68++050	&	0.04	&	0.00	\\ \hline
-run68++100	&	0.04	&	0.00	\\ \hline
-
-
-\caption{Overview of the results for the runs in the small environment, with respect to the \textit{Octree Discovery Reward} metric}.
-\label{tab:results-small-env-octree}
+    % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
+    \textbf{Method}            
+    & \thead{Octree Discovery Reward} 
+    & \thead{Standard Deviation}            \\ \hline
+    run61	&	0.04	&	0.00	\\ \hline
+    run62	&	\textbf{0.09}	&	0.00	\\ \hline
+    run63	&	0.04	&\textbf{	0.01}	\\ \hline
+    run63++025	&	0.04	&	0.00	\\ \hline
+    run63++050	&	0.03	&	0.00	\\ \hline
+    run63++075	&	0.04	&	0.00	\\ \hline
+    run63++100	&	0.03	&	0.00	\\ \hline
+    run64	&	0.00	&	0.00	\\ \hline
+    run65	&	0.02	&	0.00	\\ \hline
+    run65-pure	&	0.03	&	0.00	\\ \hline
+    run66	&	0.02	&	0.00	\\ \hline
+    run67	&	0.00	&	0.00	\\ \hline
+    run68	&	0.04	&	0.00	\\ \hline
+    run68++050	&	0.04	&	0.00	\\ \hline
+    run68++100	&	0.04	&	0.00	\\ \hline
+    \caption{Overview of the results for the runs in the small environment, with respect to the \textit{Octree Discovery Reward} metric}.
+    \label{tab:results-small-env-octree}
 \end{longtable}
 
 The complete results of the small environment can be found in Figure \ref{fig:results-small-env-performances}
 
 
-\subsection{Panoramic Performance}
-This section presents the performance performed by the panoramic grid sensor and a \textit{55 degrees} wide grid sensor. This latter, narrower, grid sensor represents ordinary cameras that have a smaller field of view \cite{2020_camera_degrees}. The following Table \ref{tab:results-panoramic} therefore compares the total objects scanned, the look direction, the octree reward and related metrics that would indicate key performance differences based on the camera system. 
 
-\begin{longtable}{|l|c|c|c|c|c|c|c|}                            \hline
+
+
+ \newpage
+\subsection{Monocular Vision}
+This section presents the performance performed by the panoramic grid sensor and a \textit{55 degrees} wide grid sensor. This latter, narrower, grid sensor represents ordinary cameras that have a smaller field of view \cite{2020_camera_degrees}. Furthermore, we also present the performance results for a wide, circular, voxel scanner that resembles the behavior of an agent that utilizes a smaller radius of the panoramic grid sensor's view. The following Table \ref{tab:results-panoramic} therefore compares the total objects scanned, the look direction, the octree leaf nodes to distinguish key performance differences based on the camera and scanner system. 
+
+\begin{longtable}{|l|c|c|}                            \hline
 % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
 \thead{Method}            
+& \thead{Episode Length} 
 & \thead{Total Objects \\ Scanned} 
 % & \thead{Look \\ Direction}
-& \thead{Octree \\Reward}
-& \thead{Octree Leaf \\ Nodes Visited}
-& \thead{Detections \\Total Count}
-& \thead{Semantic \\ Curiosity}
-& \thead{Shannon \\ Entropy}             \\ \hline
-with K of voxels       & 260k      & No       & a & b &  a & b                    \\ \hline
-without K of voxels       & 260k      & No       & a & b &  a & b                   \\ \hline
-with K of octrees       & 260k      & No       & a & b &  a & b                    \\ \hline
-without K of octrees       & 260k      & No       & a & b &  a & b                    \\ \hline
+% & \thead{Scan Points \\ Visited}
+% & \thead{Octree Leaf \\ Nodes Visited}
+\\ \hline
+run69-8-nospeed       & 260k      & No             \\ \hline
+run69-8-nospeed-monocular     & 260k      & No                 \\ \hline
+run69-8-nospeed-bigscanner     & 260k      & No                 \\ \hline
+% run63+100-monocular       & 260k      & No       & a & b &  a & b                    \\ \hline
+% without K of voxels       & 260k      & No       & a & b &  a & b                   \\ \hline
+% with K of octrees       & 260k      & No       & a & b &  a & b                    \\ \hline
+% without K of octrees       & 260k      & No       & a & b &  a & b                    \\ \hline
 \caption{Overview of the best runs for the object exploration task, with respect to the \textit{Total Objects Scanned}, \textit{Look Direction}, \textit{Octree Reward}, \textbf{Octree Leaf Nodes Visited}, \textit{Detections Total Count}, \textbf{Semantic Curiosity} and \textbf{Shannon Entropy} metrics}. \label{tab:results-panoramic}
 \end{longtable}
+
+% Furthermore, Table \ref{} 
+% for an agent with a white scanner which approximates the behavior off an agent that marked
 
 
 
@@ -398,27 +540,32 @@ without K of octrees       & 260k      & No       & a & b &  a & b              
 
 To compare the sample efficiency of PPO and SAC, we trained the best PPO-models using SAC. The following Table \ref{tab:results-SAC} displays the peformance of such models and    of experiments to demonstrate the sample efficiency of PPO. We measure the number of episodes and the number of actions to the state transition in the environment. In addition, we analyze the training speed in our experiments.
 
-\begin{longtable}{|l|c|c|c|c|c|c|c|}                            \hline
+\begin{longtable}{|l|c|c|c|}                            \hline
 % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
 \thead{Method}            
-& \thead{Episode Length \\ Direction}
+& \thead{Episode \\ Length}
 & \thead{Total Objects \\ Scanned} 
-& \thead{Octree \\Reward}
+% & \thead{Octree \\Reward}
 & \thead{Octree Leaf \\ Nodes Visited}
-& \thead{Detections \\Total Count} \\ \hline
+% & \thead{Detections \\Total Count} 
+\\ \hline
+run63++100-nospeed-nolinger-ppo       & 260k      & No       & a                   \\ \hline
+run63++100-nospeed-nolinger-sac       & 260k      & No       & a                      \\ \hline
+run68++100-nospeed-ppo       & 260k      & No       & a                      \\ \hline
+run68++100-nospeed-sac       & 260k      & No       & a                     \\ \hline
 % & \thead{Semantic \\ Curiosity}
 % & \thead{Shannon \\ Entropy}             \\ \hline
-with K of voxels       & 260k      & No       & a & b &  a           \\ \hline
-without K of voxels       & 260k      & No       & a & b &  a             \\ \hline
-with K of octrees       & 260k      & No       & a & b &  a             \\ \hline
-without K of octrees       & 260k      & No       & a & b &  a               \\ \hline
+% with K of voxels       & 260k      & No       & a & b &  a           \\ \hline
+% without K of voxels       & 260k      & No       & a & b &  a             \\ \hline
+% with K of octrees       & 260k      & No       & a & b &  a             \\ \hline
+% without K of octrees       & 260k      & No       & a & b &  a               \\ \hline
 \caption{Overview of the best runs for the object exploration task, with respect to the \textit{Total Objects Scanned}, \textit{Look Direction}, \textit{Octree Reward}, \textbf{Octree Leaf Nodes Visited}, \textit{Detections Total Count}, \textbf{Semantic Curiosity} and \textbf{Shannon Entropy} metrics}. \label{tab:results-SAC}
 \end{longtable}
 
 
 
 % \subsection{Research Scenarios}
-\subsection{Applicable Benchmark Scenarios} % Future
+\subsection{Applicable Practical Scenarios} % Future
 
 % \begin{figure}[!ht]
 %     \centering
@@ -455,14 +602,15 @@ Multiple 3D scenes have been collected and setup to demonstrate the applicabilit
 % need to be modelled and constructed to demonstrate the applicability of the learned behavior across a variety of scenarios. 
 Figure \ref{fig:unity-my-3d-envs} illustrates the training environment and different environments which were used to demonstrate the octree explorer agent's versatility to multiple environments.
 \begin{itemize}
-    \item \textbf{"Dreamscape".} A fantasy forest scene.
+    \item \textbf{Dreamscape.} A fantasy forest scene.
     % in reference to the milking robot scenario from our industry partner, Sutter Landtechnik GmbH (SLG).
-    \item \textbf{Forest.} An open nature scene with obstacles and a bus that was drove off as part of an accident.
+    \item \textbf{Forest.} An open nature scene with obstacles and a bus that was drove off as part of an accident. It is presented in three weathers: sunny, snowy and snowy overcast.
     \item \textbf{City Neighborhood.} A city scene where fires could be prevented with firefighter drones.
     % that presents buildings and rooms to navigate and explore.
 \end{itemize}
 
-Similarly , the voxel-curious agent showed visual agnostic performance to other voxelized objects such as bus and house, which are part of the environments below. Finally, \textit{quidditch} goalposts were also used to test knowledge transferability.
+Similarly , the voxel-curious agent showed visual agnostic performance to other voxelized objects such as bus and house, which are part of the environments above. 
+% Finally, \textit{quidditch} goalposts were also used to test knowledge transferability.
 
 
 % \subsection{Cross-Scenario Performance}
@@ -471,7 +619,7 @@ Similarly , the voxel-curious agent showed visual agnostic performance to other 
 
 % X
 
-\subsection{Cross-Platform Compatibility}
+\subsection{Cross-Platform Compatibility}\label{chap:4:cross-platform-compatibility}
 This section presents the results of the metrics determined to evaluate the effort of transferring the Unity ML-Agents environment to an OpenAI Gym compatible implementation. We define a compatible implementation as one that is ready to be trained and produce relevant results. The metrics are displayed in Table \ref{tab:results-cross-platform}.
 
 \begin{longtable}{|l|c|c|}                            \hline
@@ -597,5 +745,22 @@ The following deliverables will be handed in with this master thesis:
     \item For future research, a set of Unity scenes that demonstrate the versatility of the reinforcement learning agent. These scenes further allow the creation of future benchmarks for other synthetic data models and use cases, which are not limited to machine learning approaches.
 \end{itemize}
 
+\newpage
 
 
+
+Process finished with exit code 0
+
+
+
+
+Process finished with exit code 0
+
+
+
+Process finished with exit code 0
+
+
+
+
+Process finished with exit code 0
