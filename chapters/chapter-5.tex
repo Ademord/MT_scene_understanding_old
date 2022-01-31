@@ -366,7 +366,8 @@ This chapter will discuss the obtained results, the used methodology, the validi
 \section{Conclusions}\label{sec:conclusions}
     This work answered the following research questions:
     \begin{itemize}
-        \item How can the cow teats 3D pose be estimated under 10 seconds?
+      \item How can an embodied agent increase the overall certainty about an object's characteristics, i.e., how can trajectories around objects of interest be generated to reduce the uncertainty about such objects? 
+      \item How can these objects be found in large and unknown environments by the same agent?
     \end{itemize}
    
 %   We have implemented an efficient data structure for 3D
@@ -384,45 +385,70 @@ This chapter will discuss the obtained results, the used methodology, the validi
 % registration [2], for automatically deriving semantic information, for dynamic maps, i.e., maps that can handle changes of
 % the scene, and for next-best-view planning
 
-    This was done by constructing a data set, training a segmentation algorithm and estimating the pose of the cow teats from the image and the predicted segementation masks. The images for the data set were collected from an artificial cow at the ZHAW using ROSBags to manually export frames at specific timestamps. The images were subsequently annotated and added to the data set. The model was then trained and tested using the generated data set. The false negatives and false positives indicated that more pictures at specific time stamps and positions with respect to the artificial cow had to be added to the data set, to increase the model's accuracy. Consequently, a pipeline was constructed for the independent deployment of the segmentation network and the pose estimation algorithms. The segmentation network would predict and publish segmentation masks for the pose estimation component to consume them and predict, in conjunction with the input images, the pose estimation of the observed cow teats. The methods tested were RANSAC and a manual manipulation approach "MAV". The latter contributed to two other approaches at the ZHAW for the pose estimation of cow teats. From the methods presented in this work, the best results were by a manual approach "MAV", which had a 0.67 cm error with a standard deviation of 2.46. 
+These environments were used to train and test several reinforcement learning agents aimed at exploring both objects and environments.
+
+
+
+This was done by modeling and implementing multiple 3D environments in Unity 3D. These environments were used to train and test multiple reinforcement learning agents that aimed to explore both objects and the environment. Firstly, objects were explored through the scanning of the voxels that composed the object in the 3D space. Secondly, agents learned to explore the environment through extrinsic rewards of the new octree nodes discovered. The resulting agents were visual agnostic and could adapt to multiple environments. Their explorative behavior can also be adapted to a multitude of further scenarios, from product quality assurance drones to rescue, police and firefighter drones. Additionally, data collection of 3D scenes is a clear use case for the explorative behavior of the drone, enabling the creation of thorough point cloud datasets in any kind of environment. Given the problematic of small environments proposed by previous methods, our learning environments were 160$m^2$ wide. Our approach was tested against baselines that answered the research questions without direct knowledge of voxels or octrees, respectively. Furthermore, the testing grounds were inspired by the DARPA subterranean challenge to collect data about the time taken to discovery and how much of the environment was explored. Our results show that our exploration drone could explore 90\% of the 3D environment in 3 minutes, whereas methods without the proposed vision explored only 3\% of the environment and did not have the capabilities of exploring objects directly. 
+
+Accordingly, we provided the Unity code for this thesis work and three Unity environments for further work on this project, benchmarks and reproduction of the results. The Unity assets are subject to copyright and require a license to be downloaded and used. We hope that this line of work reaches many people in the community, as the work by Meta Research (Detic) \ref{}, Plenoxels \ref{} and Unity's recent acquisition of Ziva Dynamics \ref{} continue to lay the path for the future of synthetic data and machine learning.
+
+% https://github.com/facebookresearch/Detic
+% https://alexyu.net/plenoxels/
+% https://blog.unity.com/news/welcome-ziva-dynamics
+
+% and are visual agnostic . cross-environment perform better than alternative methods
+% In the current theses work we successfully proposed an agent behavior for autonomous simulated drones that is capable of exploring environments and the optics in it… It reduces the uncertainty environment through the scanning of oxidized objects and takes into account the level of entropy in the environment to provide an indirect this provides an indirect semantic understanding of the states that the agent is in… This method is a général wiiso to other further used cases such as fire accident emergency drones police accident etc. aura for the data collection steps of other methods that require visual input… With that promising future of synthetic data the concept of simplifying environments to construct more complex behaviors homework should be in line… We also successfully provide unity environment that can be further used for benchmarking and extensive billet extensibility of the environment and more… The containers improvement in the machine learning environment machine learning applications with unity continue to grow as seen in their synthetic humans and we hope that more works can follow the lines that we sat down
+
+
+%     This was done by constructing a data set, training a segmentation algorithm and estimating the pose of the cow teats from the image and the predicted segementation masks. The images for the data set were collected from an artificial cow at the ZHAW using ROSBags to manually export frames at specific timestamps. The images were subsequently annotated and added to the data set. The model was then trained and tested using the generated data set. The false negatives and false positives indicated that more pictures at specific time stamps and positions with respect to the artificial cow had to be added to the data set, to increase the model's accuracy. Consequently, a pipeline was constructed for the independent deployment of the segmentation network and the pose estimation algorithms. The segmentation network would predict and publish segmentation masks for the pose estimation component to consume them and predict, in conjunction with the input images, the pose estimation of the observed cow teats. The methods tested were RANSAC and a manual manipulation approach "MAV". The latter contributed to two other approaches at the ZHAW for the pose estimation of cow teats. From the methods presented in this work, the best results were by a manual approach "MAV", which had a 0.67 cm error with a standard deviation of 2.46. 
     
-    Additionally, an Unreal Engine 4 project for data set generation was constructed for further research. It contains 5 photorealistic scenes with present parameters for rotations and obstructing objects. Finally, a synthetic data set of cow teats was generated with over 400k images for pose estimation. This dataset was used to train the pose estimation algoritmh DOPE, which unfortunately could not close the reality gap and output predictions from real images.
+%     Additionally, an Unreal Engine 4 project for data set generation was constructed for further research. It contains 5 photorealistic scenes with present parameters for rotations and obstructing objects. Finally, a synthetic data set of cow teats was generated with over 400k images for pose estimation. This dataset was used to train the pose estimation algoritmh DOPE, which unfortunately could not close the reality gap and output predictions from real images.
 
 \section{Where to Go From Here?}\label{sec:future-work}
-    This work presents a pose estimation system for cow teats using machine learning and computer vision methods. There are a few possible routes for the extension of this work to improve the performance of the achieved results. First, a different segmentation network with a faster prediction time could significantly reduce the overall performance time of the presented approach, leading to almost real-time performance. Second, a memory system could help in cases of obstruction. For example, when the suction cups are attached, the system could still remember the position of the cow teats and attempt to reattach in case one of the cups detached on movement. Third, an active vision system could significantly improve the algorithm's time to obtain precise predictions. An active vision system would control the camera position and movement to collect frames with the least amount of movements, so that the objects in the scene could be remembered and understood more efficiently.
+    This work presents a reinforcement learning setup for agents to explore objects and environments. There are a few possible routes for the extension of this work to improve the performance of the achieved results. 
+    First, our model-free approach uses synthetic data which greatly simplifies the problematics of the real world \cite{wang2018look}. 
+    Our current Unity setup provides noise-free information about the environment through the grid sensor; this is one of the points we would like to tackle in our future work steps which involves the creation of the voxelized environment from the depths of the unity cameras, bringing our method closer to a production setup.
+    Second, the implementation of a dynamic, moving, environment would allow us to evaluate the obstacle avoidance capabilities of our agent and, most importantly, the claim that model free approaches suffer given their simplification of the dynamics of an environment \cite{wang2018look}.
+    Third, the usage of our model to collect object data and train an object detector, would allow us to directly compare our approach to Chaplot's work \cite{chaplot2020semantic}. Accordingly, the connection to other semantic sub-modules would also bring our agent closer to production.
+    Finally, a number of other improvements would benefit the project such as 1) the evaluation of our mobility algorithms and our F1-metric, 2) hyper-parameter sensitivity tests, 3) analysis of attention and memory modules in the Unity ML-Agents plugin, as well as 4) the implementation of a Unity environment that allows curriculum learning using the provided tools by ML-Agents \cite{github-unity-mlagents-toolkit}.
     
-    In conclusion, the presented work extends the related research on this topic by a providing machine learning and computer vision based approach for the 3D pose and direction estimation of cow teats.
     
-  
-    Furthermore, a big point in model free approaches is the usage of synthetic data which is noise-free and greatly simplifies the features one would see in a real world environment \cite{wang2018look}. Our current Unity setup provides noise-free information about the environment through the grid sensor; this is one of the points we would like to tackle in our future work steps which involves the creation of the voxelized environment from the depths of the unity cameras, bringing our method closer to a production setup.
+    % First, a different segmentation network with a faster prediction time could significantly reduce the overall performance time of the presented approach, leading to almost real-time performance. 
+    % Second, a memory system could help in cases of obstruction. 
+    % For example, when the suction cups are attached, the system could still remember the position of the cow teats and attempt to reattach in case one of the cups detached on movement. 
+    % Third, an active vision system could significantly improve the algorithm's time to obtain precise predictions. An active vision system would control the camera position and movement to collect frames with the least amount of movements, so that the objects in the scene could be remembered and understood more efficiently.
     
-    Consequently part of our future work steps include evaluating our method in a dynamic, moving, environment so that we can evaluate the claim that model free approaches suffer given their simplification of the dynamics of an environment \cite{wang2018look}.
+    % machine learning and computer vision based approach for the 3D pose and direction estimation of cow teats.
+    In conclusion, the presented work extends the related research on this topic by a providing a reinforcement learning approach for the exploration of objects and environments for the autonomous navigation and simulated agents.
+    
+    % Furthermore, a big point in model free approaches is the usage of synthetic data which is noise-free and greatly simplifies the features one would see in a real world environment \cite{wang2018look}. 
+    
+    % Currently our personal performance metrics are separated into the exploration percentage and the number of objects scanned.
+    % We consider it would be useful for future work to develop a performance metric that follows the harmnoy concept F1-score achieves between the recall and precision of classifiers. To this end, our metric would balance the performance between exploration percentage and the number of objects scanned in the environment.
+    
+    % (START DISCUSSION POINTS GRABBED WHILE WRITING)
+    % Finally, given trajectories that incorporate the concept of temporal classification entropy, one can sample images to create a dataset for a semantic detector. 
+    
+    % the work of Learning 3D Semantic Reconstruction on Octrees inspirees further work to look into octree subdivision based onn initial inherent entropy in each node.: motivate resolution of inherent uncerainty in each node by exploring it and motivate subdivisions such as in vespa2019adaptive
 
-    Currently our personal performance metrics are separated into the exploration percentage and the number of objects scanned.
-    We consider it would be useful for future work to develop a performance metric that follows the harmnoy concept F1-score achieves between the recall and precision of classifiers. To this end, our metric would balance the performance between exploration percentage and the number of objects scanned in the environment.
-    
-    (START DISCUSSION POINTS GRABBED WHILE WRITING)
-    Finally, given trajectories that incorporate the concept of temporal classification entropy, one can sample images to create a dataset for a semantic detector. 
-    
-    the work of Learning 3D Semantic Reconstruction on Octrees inspirees further work to look into octree subdivision based onn initial inherent entropy in each node.: motivate resolution of inherent uncerainty in each node by exploring it and motivate subdivisions such as in vespa2019adaptive
 
-
-    \subsection{Further Work bullet points >> to be moved to chap 5/6}
-    Further work:
-    \begin{itemize}
-        \item The analysis of the sensitivity to hyper-parameter of PPO and SAC variants.
-        \item collision to objects, maybe a penalty because they get "Stuck" next to an object. penalty keep distance to goal
-        \item motor on two directions
-        \item 
-    \end{itemize}
+    % \subsection{Further Work bullet points >> to be moved to chap 5/6}
+    % Further work:
+    % \begin{itemize}
+    %     \item The analysis of the sensitivity to hyper-parameter of PPO and SAC variants.
+    %     \item collision to objects, maybe a penalty because they get "Stuck" next to an object. penalty keep distance to goal
+    %     \item motor on two directions
+    %     \item 
+    % \end{itemize}
     
-    \subsection{Generalization Scenarios}\label{}
-    \subsection{Semantic Sub-modules}\label{}
+    % \subsection{Generalization Scenarios}\label{}
+    % \subsection{Semantic Sub-modules}\label{}
     
     
-    SOURCE: TENSORFLOW 3D ARTICLE:
-    discussion future work, add photo of encoder
-    In our recent paper, “DOPS: Learning to Detect 3D Objects and Predict their 3D Shapes”, we describe in detail the single-stage weakly supervised learning algorithm used for object detection in TF 3D. In addition, in a follow up work, we extended the 3D object detection model to leverage temporal information by proposing a sparse LSTM-based multi-frame model. We go on to show that this temporal model outperforms the frame-by-frame approach by 7.5% in the Waymo Open dataset.
+    % SOURCE: TENSORFLOW 3D ARTICLE:
+    % discussion future work, add photo of encoder
+    % In our recent paper, “DOPS: Learning to Detect 3D Objects and Predict their 3D Shapes”, we describe in detail the single-stage weakly supervised learning algorithm used for object detection in TF 3D. In addition, in a follow up work, we extended the 3D object detection model to leverage temporal information by proposing a sparse LSTM-based multi-frame model. We go on to show that this temporal model outperforms the frame-by-frame approach by 7.5% in the Waymo Open dataset.
 
 
 

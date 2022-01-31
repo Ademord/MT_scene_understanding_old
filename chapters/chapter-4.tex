@@ -255,7 +255,7 @@ object-detector-pure & 93 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 1.01
     \caption{Overview of the best object-focused runs without knowledge of voxels with respect to the \textit{Episode Length} and the \textit{Total Objects Scanned} metrics}. \label{tab:RQ1-results-noknowledgeofvoxels}
 \end{longtable}
 
-Further Tables related to these agents can be found in Appendix \ref{appendix:RQ1-results-noknowledgeofvoxels}.
+More details related to these agents can be found in Appendix \ref{appendix:RQ1-results-noknowledgeofvoxels}.
 
 
 
@@ -269,38 +269,44 @@ This section deals with the results related to question 2, which focuses on the 
 The following Table \ref{tab:RQ2-results} summarizes the best models with knowledge of octrees for the given task. %  using the octree discovery reward
 
 % The presented numbers are the result of 500000 optimizations 
-\begin{longtable}{|l|c|c|c|}                            \hline
+\begin{longtable}{|l|c|c|}                            \hline
     % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
     \textbf{Method}            
     & \thead{Episode Length}                
     & \thead{Octree Discovery Reward}                
-    & \thead{Standard Deviation}            \\ \hline
+    % & \thead{Standard Deviation}            
+    \\ \hline
     % run61-explore	&	95	\%	&	0.89	&	0.07	\\ \hline
     % run61-explore-constrained	&	100	\%	&	0.93	&	0.03	\\ \hline
-    run62-4	&	97	\%	&	0.83	&	0.03	\\ \hline
-    run62-4-pigeon	&	19	\%	&	0.22	&	0.05	\\ \hline
-    run62-4-pigeon-pathak	&	25	\%	&	0.21	&	0.06	\\ \hline
-    run62-8	&	49	\%	&	0.18	&	0.05	\\ \hline
-    run62-8-pathak	&	63	\%	&	0.15	&	0.02	\\ \hline
-    run62-16	&	4	\%	&	0.07	&	0.00	\\ \hline
-    run62-16-constrained	&	100	\%	&	0.01	&	0.00	\\ \hline
-    run62-16-constrained-pigeon	&	100	\%	&	0.03	&	0.01	\\ \hline
-    run62-16-constr-pigeon-pathak	&	100	\%	&	0.01	&	0.00	\\ \hline
-    run62-16-pathak	&	4	\%	&	0.07	&	0.00	\\ \hline
+octree-16 & 4 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.07 \\ \hline
+octree-16-constrained & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.01 \\ \hline
+octree-16-constrained-pigeon & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.03 \\ \hline
+octree-16-constrained-pigeon-pathak & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.01 \\ \hline
+octree-4 & 97 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 0.83 \\ \hline
+octree-4-pigeon & 19 & {\cellcolor[HTML]{EAF2F0}} \color[HTML]{000000} 0.22 \\ \hline
+octree-4-pigeon-pathak & 24 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.21 \\ \hline
+octree-8 & 49 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.18 \\ \hline
+
     \caption{Overview of the best environment-exploration focused runs with respect to the \textit{Episode Length} and the \textit{Octree Discovery Reward} metrics}. \label{tab:RQ2-results}
 \end{longtable}
 
 The results for the environment-focused methods that have no knowledge of octrees are presented below in Table \ref{tab:RQ2-results-noknowledgeofOctrees}.
-\begin{longtable}{|l|c|c|c|}                            \hline
+\begin{longtable}{|l|c|c|}                            \hline
     % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
     \textbf{Method}            
     & \thead{Episode Length}                
     & \thead{Octree Discovery Reward}                
-    & \thead{Standard Deviation}            \\ \hline
+    % & \thead{Standard Deviation}       
+    \\ \hline
     % run61-explore	&	95	\%	&	0.89	&	0.07	\\ \hline
-    random-agent	&	100	\%	&	0.93	&	0.03	\\ \hline
-    run61-explore-constrained	&	100	\%	&	0.93	&	0.03	\\ \hline
-    run61-explore-constrained-pathak	&	100	\%	&	0.93	&	0.03	\\ \hline
+random-agent	&	100	\%	&	0.93	\\ \hline
+blind-agent-explore-constrained & 97 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 0.89 \\ \hline
+blind-agent-explore-constrained-nospeed & 100 & {\cellcolor[HTML]{6EB6A7}} \color[HTML]{F1F1F1} 0.85 \\ \hline
+blind-agent-explore-constrained-nospeed-pathak & 98 & {\cellcolor[HTML]{76BAAC}} \color[HTML]{000000} 0.83 \\ \hline
+octree-16-pathak & 4 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.07 \\ \hline
+octree-4-pathak & 96 & {\cellcolor[HTML]{8BC4B8}} \color[HTML]{000000} 0.80 \\ \hline
+octree-8-pathak & 77 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.15 \\ \hline
+
     \caption{Overview of the best environment-exploration focused that have no knowledge of octrees to the \textit{Episode Length} and the \textit{Octree Discovery Reward} metrics}. \label{tab:RQ2-results-noknowledgeofOctrees}
 \end{longtable}
 
@@ -314,8 +320,9 @@ Relevant depth-metrics for the explorative task are presented below in Table \re
     % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
     \thead{Method}            
     & \thead{Octree Scan \\ Points Found}
+    & \thead{Octree Leaf  \\ Nodes Visited}
     & \thead{Octree \\ Lingering Count}
-    & \thead{Octree Leaf  \\ Nodes Visited}   \\ \hline
+    \\ \hline
     % run61-explore	        &	1\%	&	3.14	&	1\%	\\ \hline
     % run61-explore-constrained	        &	2\%	&	3.11	&	1\%	\\ \hline
     % run62-4     	&	1\%	&	3.11	&	1\%	\\ \hline
@@ -330,18 +337,22 @@ Relevant depth-metrics for the explorative task are presented below in Table \re
     % run62-16-pathak	        &	6\%	&	9.91	&	1\%	\\ \hline
     % run61-explore	&	3.0	\%	&	3.14	&	2.3	\%	\\ \hline
     random-agent	&	100	\%	&	0.93	&	0.03	\\ \hline
-    run61-explore-constrained	&	100	\%	&	0.93	&	0.03	\\ \hline
-    run61-explore-constrained-pathak	&	100	\%	&	0.93	&	0.03	\\ \hline
-    run62-4	&	2.3	\%	&	3.11	&	2.3	\%	\\ \hline
-    run62-4-pigeon	&	0.7	\%	&	6.94	&	0.3	\%	\\ \hline
-    run62-4-pigeon-pathak	&	1.0	\%	&	8.39	&	0.3	\%	\\ \hline
-    run62-8	&	12.2	\%	&	7.05	&	6.5	\%	\\ \hline
-    run62-8-pathak	&	11.9	\%	&	7.20	&	7.3	\%	\\ \hline
-    run62-16	&	7.5	\%	&	10.07	&	1.7	\%	\\ \hline
-    run62-16-constrained	&	30.2	\%	&	4.99	&	13.5	\%	\\ \hline
-    run62-16-constrained-pigeon	&	26.4	\%	&	3.68	&	21.5	\%	\\ \hline
-    run62-16-constrained-pigeon-pathak	&	19.0	\%	&	5.66	&	5.9	\%	\\ \hline
-    run62-16-pathak	&	8.0	\%	&	9.91	&	1.7	\%	\\ \hline
+blind-agent-explore-constrained & 2.95 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 2.28 & 3.14 \\ \hline
+blind-agent-explore-constrained-nospeed & 2.30 & {\cellcolor[HTML]{EAF2F0}} \color[HTML]{000000} 2.36 & 2.68 \\ \hline
+blind-agent-explore-constrained-nospeed-pathak & 3.12 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 2.32 & 2.86 \\ \hline
+octree-16 & 11.93 & {\cellcolor[HTML]{E9F1EF}} \color[HTML]{000000} 2.72 & 9.97 \\ \hline
+octree-16-constrained & 48.38 & {\cellcolor[HTML]{90C7BC}} \color[HTML]{000000} 21.56 & 4.99 \\ \hline
+octree-16-constrained-pigeon & 42.26 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 34.34 & 3.68 \\ \hline
+octree-16-constrained-pigeon-pathak & 30.46 & {\cellcolor[HTML]{C9E2DC}} \color[HTML]{000000} 9.47 & 5.66 \\ \hline
+octree-16-pathak & 12.79 & {\cellcolor[HTML]{E9F1EF}} \color[HTML]{000000} 2.64 & 9.61 \\ \hline
+octree-4 & 2.99 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 2.31 & 3.11 \\ \hline
+octree-4-pathak & 2.99 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 2.09 & 3.39 \\ \hline
+octree-4-pigeon & 5.82 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 2.27 & 6.94 \\ \hline
+octree-4-pigeon-pathak & 8.16 & {\cellcolor[HTML]{E8F1EF}} \color[HTML]{000000} 2.77 & 8.39 \\ \hline
+octree-8 & 9.72 & {\cellcolor[HTML]{DDEBE8}} \color[HTML]{000000} 5.22 & 7.05 \\ \hline
+octree-8-pathak & 10.96 & {\cellcolor[HTML]{D5E7E3}} \color[HTML]{000000} 6.97 & 6.86 \\ \hline
+
+
     \caption{Overview of the best runs for the object exploration task, with respect to the \textit{Octree Scan Points Found}, \textit{Octree Lingering Count} and \textit{Octree Leaf Nodes Visited} metrics}. \label{tab:RQ2-results-comparative-voxeloctree}
 \end{longtable}
 
@@ -349,36 +360,33 @@ Relevant depth-metrics for the explorative task are presented below in Table \re
 \subsection{Mixed-Focus Agents}
 This sections presents the variant of agents that have both knowledge of the environment and voxels. Information about the environment can be present in the form of octree nodes, lingering feedback and \textit{pigeon observations}. Table \ref{tab:results-mixed-agents} displays the results for these methods.
 
-\begin{longtable}{|l|c|c|c|c|c|c|c|}                            \hline
+\begin{longtable}{|l|c|c|c|c|}                            \hline
     % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
     \thead{Method}            
+    & \thead{Episode \\ Length}                
     & \thead{Total Objects \\ Scanned} 
-    & \thead{Look \\ Direction}
-    & \thead{Octree \\Reward}
+    & \thead{F1-score} 
     & \thead{Octree Leaf \\ Nodes Visited}
-    & \thead{Detections \\Total Count}
-    & \thead{Semantic \\ Curiosity}
-    & \thead{Shannon \\ Entropy}             
     \\ \hline
-    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-    run64       & 260k      & No       & a & b &  a & b    & b                 \\ \hline
-    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
-    run64       & 260k      & No       & a & b  & a & b    & b                  \\ \hline
+   
+run69-4-noTrainEntropy & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & {\cellcolor[HTML]{DFECE9}} \color[HTML]{000000} 0.29 \\ \hline
+run69-4-nolinger-noTrainEntropy & 98 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.18 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.06 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.23 \\ \hline
+run69-16 & 96 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.23 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.09 & {\cellcolor[HTML]{C9E2DC}} \color[HTML]{000000} 0.40 \\ \hline
+run69-16-noTrainEntropy & 99 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.23 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.09 & {\cellcolor[HTML]{C7E1DB}} \color[HTML]{000000} 0.41 \\ \hline
+run69-4 & 99 & {\cellcolor[HTML]{CBE3DD}} \color[HTML]{000000} 0.62 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.14 & {\cellcolor[HTML]{E6F0EE}} \color[HTML]{000000} 0.25 \\ \hline
+ev_sac.run69-8 & 92 & {\cellcolor[HTML]{A7D1C9}} \color[HTML]{000000} 1.06 & {\cellcolor[HTML]{D8E9E5}} \color[HTML]{000000} 0.24 & {\cellcolor[HTML]{BEDCD6}} \color[HTML]{000000} 0.46 \\ \hline
+run69-8-nolinger & 95 & {\cellcolor[HTML]{66B2A3}} \color[HTML]{F1F1F1} 1.84 & {\cellcolor[HTML]{BFDDD7}} \color[HTML]{000000} 0.27 & {\cellcolor[HTML]{CDE4DF}} \color[HTML]{000000} 0.38 \\ \hline
+run69-8-nolinger-noTrainEntropy & 97 & {\cellcolor[HTML]{5FAF9F}} \color[HTML]{F1F1F1} 1.93 & {\cellcolor[HTML]{B2D7CF}} \color[HTML]{000000} 0.28 & {\cellcolor[HTML]{CAE2DD}} \color[HTML]{000000} 0.40 \\ \hline
+run69-16-nolinger & 99 & {\cellcolor[HTML]{BADAD4}} \color[HTML]{000000} 0.83 & {\cellcolor[HTML]{ADD4CC}} \color[HTML]{000000} 0.28 & {\cellcolor[HTML]{5AAC9C}} \color[HTML]{F1F1F1} 0.97 \\ \hline
+run69-8-noTrainEntropy & 93 & {\cellcolor[HTML]{73B8AA}} \color[HTML]{000000} 1.68 & {\cellcolor[HTML]{A7D1C9}} \color[HTML]{000000} 0.29 & {\cellcolor[HTML]{C0DDD7}} \color[HTML]{000000} 0.45 \\ \hline
+run69-8 & 90 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 2.05 & {\cellcolor[HTML]{7ABCAF}} \color[HTML]{000000} 0.33 & {\cellcolor[HTML]{B6D8D1}} \color[HTML]{000000} 0.50 \\ \hline
+run69-16-nolinger-noTrainEntropy & 97 & {\cellcolor[HTML]{9ACBC1}} \color[HTML]{000000} 1.20 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 0.37 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 1.00 \\ \hline
+
+
     \caption{Overview of the best runs for the object exploration task, with respect to the \textit{Total Objects Scanned}, \textit{Look Direction}, \textit{Octree Reward}, \textbf{Octree Leaf Nodes Visited}, \textit{Detections Total Count}, \textbf{Semantic Curiosity} and \textbf{Shannon Entropy} metrics}. \label{tab:results-mixed-agents}
 \end{longtable}
 
-
+More details related to these agents can be found in Appendix \ref{appendix:results-mixed-focused-agents-bigtable}.
 
 
 \newpage
