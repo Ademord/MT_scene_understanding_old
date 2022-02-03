@@ -385,11 +385,15 @@ This chapter will discuss the obtained results, the used methodology, the validi
 % registration [2], for automatically deriving semantic information, for dynamic maps, i.e., maps that can handle changes of
 % the scene, and for next-best-view planning
 
+
+
+
+This was done by modeling and implementing multiple 3D environments in Unity 3D.
 These environments were used to train and test several reinforcement learning agents aimed at exploring both objects and environments.
-
-
-
-This was done by modeling and implementing multiple 3D environments in Unity 3D. These environments were used to train and test multiple reinforcement learning agents that aimed to explore both objects and the environment. Firstly, objects were explored through the scanning of the voxels that composed the object in the 3D space. Secondly, agents learned to explore the environment through extrinsic rewards of the new octree nodes discovered. The resulting agents were visual agnostic and could adapt to multiple environments. Their explorative behavior can also be adapted to a multitude of further scenarios, from product quality assurance drones to rescue, police and firefighter drones. Additionally, data collection of 3D scenes is a clear use case for the explorative behavior of the drone, enabling the creation of thorough point cloud datasets in any kind of environment. Given the problematic of small environments proposed by previous methods, our learning environments were 160$m^2$ wide. Our approach was tested against baselines that answered the research questions without direct knowledge of voxels or octrees, respectively. Furthermore, the testing grounds were inspired by the DARPA subterranean challenge to collect data about the time taken to discovery and how much of the environment was explored. Our results show that our exploration drone could explore 90\% of the 3D environment in 3 minutes, whereas methods without the proposed vision explored only 3\% of the environment and did not have the capabilities of exploring objects directly. 
+% These environments were used to train and test multiple reinforcement learning agents that aimed to explore both objects and the environment. 
+Firstly, objects were explored through the scanning of the voxels that composed the object in the 3D space. 
+Secondly, agents learned to explore the environment through extrinsic rewards of the new octree nodes discovered. The resulting agents were visual agnostic and could adapt to multiple environments. Their explorative behavior can also be adapted to a multitude of further scenarios, from product quality assurance drones to rescue, police and firefighter drones. 
+Additionally, data collection of 3D scenes is a clear use case for the explorative behavior of the drone, enabling the creation of thorough point cloud datasets in any kind of environment. Given the problematic of small environments proposed by previous methods, our learning environments were 160$m^2$ wide. Our approach was tested against baselines that answered the research questions without direct knowledge of voxels or octrees, respectively. Furthermore, the testing grounds were inspired by the DARPA subterranean challenge to collect data about the time taken to discovery and how much of the environment was explored. Our results show that our exploration drone could explore 90\% of the 3D environment in 3 minutes, whereas methods without the proposed vision explored only 3\% of the environment and did not have the capabilities of exploring objects directly. 
 
 Accordingly, we provided the Unity code for this thesis work and three Unity environments for further work on this project, benchmarks and reproduction of the results. The Unity assets are subject to copyright and require a license to be downloaded and used. We hope that this line of work reaches many people in the community, as the work by Meta Research (Detic) \ref{}, Plenoxels \ref{} and Unity's recent acquisition of Ziva Dynamics \ref{} continue to lay the path for the future of synthetic data and machine learning.
 
@@ -420,7 +424,7 @@ Accordingly, we provided the Unity code for this thesis work and three Unity env
     % Third, an active vision system could significantly improve the algorithm's time to obtain precise predictions. An active vision system would control the camera position and movement to collect frames with the least amount of movements, so that the objects in the scene could be remembered and understood more efficiently.
     
     % machine learning and computer vision based approach for the 3D pose and direction estimation of cow teats.
-    In conclusion, the presented work extends the related research on this topic by a providing a reinforcement learning approach for the exploration of objects and environments for the autonomous navigation and simulated agents.
+    In conclusion, the presented work extends the related research on this topic by a providing a reinforcement learning approach for the exploration of objects and environments for autonomous navigation and simulated agents.
     
     % Furthermore, a big point in model free approaches is the usage of synthetic data which is noise-free and greatly simplifies the features one would see in a real world environment \cite{wang2018look}. 
     

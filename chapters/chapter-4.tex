@@ -458,59 +458,81 @@ This section presents the best performances for the voxel exploration task and t
 In the small environment, the agent's grid sensor has a smaller radius of 8 meters.
 The following Table \ref{tab:results-small-env-voxel} displays the best runs for the voxel-curious behaviors in the small environment.
 
-\begin{longtable}{|l|c|c|c|c|c|c|c|}                            \hline
+\begin{longtable}{|l|c|c|c|}                            \hline
     % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
     \thead{Method}            
-    & \thead{Average Total Objects Scanned}  
-    & \thead{Standard Deviation}            
+    & \thead{Episode Length}                
+    & \thead{Total Objects Scanned} 
+    & \thead{Standard Deviation} 
+    % & \thead{F1-score} 
+    % & \thead{Octree Leaf \\ Nodes Visited}        
     \\ \hline
     
-    run61	&	0.00	&	0.00	\\ \hline
-    run62	&	0.00	&	0.00	\\ \hline
-    run63	&	3.03	&	1.84	\\ \hline
-    run63++025	&	4.76	&	\textbf{2.37}	\\ \hline
-    run63++050	&	1.49	&	0.47	\\ \hline
-    run63++075	&	2.62	&	0.88	\\ \hline
-    run63++100	&	\textbf{9.42}	&	0.39	\\ \hline
-    run64	&	0.00	&	0.00	\\ \hline
-    run65	&	0.03	&	0.01	\\ \hline
-    run65	&	0.01	&	0.03	\\ \hline
-    run65-pure	&	\textbf{8.71}	&	0.56	\\ \hline
-    run66	&	0.35	&	0.12	\\ \hline
-    run66	&	0.16	&	0.08	\\ \hline
-    run67	&	0.00	&	0.00	\\ \hline
-    run68	&	0.00	&	0.00	\\ \hline
-    run68++050	&	\textbf{9.19}	&	0.41	\\ \hline
-    run68++100	&	\textbf{9.04}	&	0.66	\\ \hline
+blind-agent-explore-constrained & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & 0.00 \\ \hline
+octree-4 & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & 0.00 \\ \hline
+voxel++025 & 100 & {\cellcolor[HTML]{CCE3DF}} \color[HTML]{000000} 4.76 & 1.84 \\ \hline
+voxel++050 & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 1.49 & 2.37 \\ \hline
+voxel++075 & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 2.62 & 0.47 \\ \hline
+voxel++100 & 100 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 9.42 & 0.88 \\ \hline
+voxel & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 3.03 & 0.39 \\ \hline
+shortest-path & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & 0.00 \\ \hline
+object-detector-nospeed & 100 & {\cellcolor[HTML]{67B3A4}} \color[HTML]{F1F1F1} 8.71 & 0.01 \\ \hline
+object-detector & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.01 & 0.56 \\ \hline
+semantic-curiosity & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.16 & 0.12 \\ \hline
+semantic-entropy & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & 0.01 \\ \hline
+voxel-entropy++050 & 100 & {\cellcolor[HTML]{5AAD9C}} \color[HTML]{F1F1F1} 9.19 & 0.00 \\ \hline
+voxel-entropy++100 & 100 & {\cellcolor[HTML]{5EAF9E}} \color[HTML]{F1F1F1} 9.04 & 0.41 \\ \hline
+voxel-entropy-normalized & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & 0.66 \\ \hline
     
     \caption{Overview of the results for the runs in the small environment, with respect to the \textit{Total Objects Scanned} metric}.
     \label{tab:results-small-env-voxel}
 \end{longtable}
 
 
+
+% name & \%episode\_length & avg\_total\_objects\_scanned & F1\_harmony & \%leafNodesExplored\_norm & Drone/SP: Look Error & Drone/Detections Total Count & Drone/Entropy: RationalizedShannonEntropy \\ \hline
+% blind-agent-explore-constrained & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & {\cellcolor[HTML]{ACD4CC}} \color[HTML]{000000} 0.50 & 0.35 & 0.00 & 0.00 \\ \hline
+% octree-4 & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 1.00 & 0.64 & 0.00 & 0.00 \\ \hline
+% shortest-path & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.04 & 0.37 & 0.00 & 0.00 \\ \hline
+% semantic-entropy & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.04 & 0.35 & 655758.30 & 0.28 \\ \hline
+% voxel-entropy-normalized & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & {\cellcolor[HTML]{BADBD4}} \color[HTML]{000000} 0.42 & 0.45 & 312259.79 & 0.10 \\ \hline
+% object-detector & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.01 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.00 & {\cellcolor[HTML]{E0EDEA}} \color[HTML]{000000} 0.21 & 0.19 & 637355.56 & 0.64 \\ \hline
+% semantic-curiosity & 100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.16 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.02 & {\cellcolor[HTML]{CFE5E0}} \color[HTML]{000000} 0.30 & 0.43 & 606310.02 & 0.30 \\ \hline
+% voxel++050 & 100 & {\cellcolor[HTML]{D5E8E4}} \color[HTML]{000000} 1.49 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 0.11 & {\cellcolor[HTML]{C8E2DC}} \color[HTML]{000000} 0.34 & 0.28 & 0.00 & 0.00 \\ \hline
+% voxel++075 & 100 & {\cellcolor[HTML]{C3DFD9}} \color[HTML]{000000} 2.62 & {\cellcolor[HTML]{D9EAE6}} \color[HTML]{000000} 0.16 & {\cellcolor[HTML]{C2DFD9}} \color[HTML]{000000} 0.37 & 0.32 & 0.00 & 0.00 \\ \hline
+% voxel & 100 & {\cellcolor[HTML]{BDDCD5}} \color[HTML]{000000} 3.03 & {\cellcolor[HTML]{BADAD4}} \color[HTML]{000000} 0.20 & {\cellcolor[HTML]{ACD4CC}} \color[HTML]{000000} 0.50 & 0.20 & 0.00 & 0.00 \\ \hline
+% voxel++025 & 100 & {\cellcolor[HTML]{A0CEC5}} \color[HTML]{000000} 4.76 & {\cellcolor[HTML]{99CBC0}} \color[HTML]{000000} 0.23 & {\cellcolor[HTML]{B9DAD3}} \color[HTML]{000000} 0.43 & 0.18 & 0.00 & 0.00 \\ \hline
+% object-detector-nospeed & 100 & {\cellcolor[HTML]{60AFA0}} \color[HTML]{F1F1F1} 8.71 & {\cellcolor[HTML]{6FB6A8}} \color[HTML]{F1F1F1} 0.28 & {\cellcolor[HTML]{BEDCD6}} \color[HTML]{000000} 0.40 & 0.18 & 1282254.18 & 0.53 \\ \hline
+% voxel++100 & 100 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 9.42 & {\cellcolor[HTML]{5DAE9D}} \color[HTML]{F1F1F1} 0.30 & {\cellcolor[HTML]{B9DAD3}} \color[HTML]{000000} 0.43 & 0.17 & 0.00 & 0.00 \\ \hline
+% voxel-entropy++050 & 100 & {\cellcolor[HTML]{59AC9B}} \color[HTML]{F1F1F1} 9.19 & {\cellcolor[HTML]{59AC9B}} \color[HTML]{F1F1F1} 0.30 & {\cellcolor[HTML]{B7D9D2}} \color[HTML]{000000} 0.44 & 0.16 & 1227545.28 & 0.52 \\ \hline
+% voxel-entropy++100 & 100 & {\cellcolor[HTML]{5BAD9C}} \color[HTML]{F1F1F1} 9.04 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 0.31 & {\cellcolor[HTML]{B4D8D0}} \color[HTML]{000000} 0.45 & 0.17 & 1142712.42 & 0.49 \\ \hline
+
 % \newpage
 The following Table \ref{tab:results-small-env-octree} presents the runs with the best performance in the octree exploration task.
  
 \begin{longtable}{|l|c|c|}                            \hline
     % \multicolumn{3}{|l|}{\textbf{Voxel-Curiosity}}              \\\hline
-    \textbf{Method}            
-    & \thead{Octree Discovery Reward} 
-    & \thead{Standard Deviation}            \\ \hline
-    run61	&	0.04	&	0.00	\\ \hline
-    run62	&	\textbf{0.09}	&	0.00	\\ \hline
-    run63	&	0.04	&\textbf{	0.01}	\\ \hline
-    run63++025	&	0.04	&	0.00	\\ \hline
-    run63++050	&	0.03	&	0.00	\\ \hline
-    run63++075	&	0.04	&	0.00	\\ \hline
-    run63++100	&	0.03	&	0.00	\\ \hline
-    run64	&	0.00	&	0.00	\\ \hline
-    run65	&	0.02	&	0.00	\\ \hline
-    run65-pure	&	0.03	&	0.00	\\ \hline
-    run66	&	0.02	&	0.00	\\ \hline
-    run67	&	0.00	&	0.00	\\ \hline
-    run68	&	0.04	&	0.00	\\ \hline
-    run68++050	&	0.04	&	0.00	\\ \hline
-    run68++100	&	0.04	&	0.00	\\ \hline
+    \textbf{Method}          
+    % & \thead{Episode Length}                
+    & \thead{\% Octree Leaf Nodes Visited}        
+    & \thead{Standard Deviation} 
+    \\ \hline
+blind-agent-explore-constrained & {\cellcolor[HTML]{D9E9E6}} \color[HTML]{000000} 27.84 & 0.00 \\ \hline
+octree-4 & {\cellcolor[HTML]{55AA99}} \color[HTML]{F1F1F1} 55.68 & 0.00 \\ \hline
+voxel++025 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 23.85 & 0.01 \\ \hline
+voxel++050 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 18.85 & 0.00 \\ \hline
+voxel++075 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 20.82 & 0.00 \\ \hline
+voxel++100 & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 23.76 & 0.00 \\ \hline
+voxel & {\cellcolor[HTML]{D9EAE6}} \color[HTML]{000000} 27.79 & 0.00 \\ \hline
+shortest-path & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 2.47 & 0.00 \\ \hline
+object-detector-nospeed & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 22.24 & 0.00 \\ \hline
+object-detector & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 11.42 & 0.00 \\ \hline
+semantic-curiosity & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 16.84 & 0.00 \\ \hline
+semantic-entropy & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 2.33 & 0.00 \\ \hline
+voxel-entropy++050 & {\cellcolor[HTML]{E9F1EF}} \color[HTML]{000000} 24.56 & 0.01 \\ \hline
+voxel-entropy++100 & {\cellcolor[HTML]{E5EFED}} \color[HTML]{000000} 25.28 & 0.00 \\ \hline
+voxel-entropy-normalized & {\cellcolor[HTML]{EBF2F0}} \color[HTML]{000000} 23.45 & 0.00 \\ \hline
+
     \caption{Overview of the results for the runs in the small environment, with respect to the \textit{Octree Discovery Reward} metric}.
     \label{tab:results-small-env-octree}
 \end{longtable}
